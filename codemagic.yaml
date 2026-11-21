@@ -80,6 +80,7 @@ workflows:
             -destination 'generic/platform=iOS Simulator' -derivedDataPath build/sim CODE_SIGNING_ALLOWED=NO build | tail -n 5
       - name: Capture screenshots
         script: |
+          if [ "${WATCH_ONLY:-0}" = "1" ]; then echo "WATCH_ONLY: iPhone screenshots skipped"; exit 0; fi
           set -euo pipefail
           APP=$(ls -d build/sim/Build/Products/Debug-iphonesimulator/ZIKR.app)
           BID=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/Info.plist")
@@ -120,6 +121,7 @@ workflows:
           for LANG in ru en; do
             W=$(xcrun simctl create "Watch-$LANG" "$WTYPE" "$WRT")
             xcrun simctl boot "$W"; xcrun simctl bootstatus "$W" -b
+            xcrun simctl status_bar "$W" override --time "9:41" || true
             xcrun simctl install "$W" "$WAPP"
             xcrun simctl launch "$W" "$WBID" -AppleLanguages "($LANG)" -ZIKRScreenshots >/dev/null; sleep 60
             xcrun simctl terminate "$W" "$WBID" || true

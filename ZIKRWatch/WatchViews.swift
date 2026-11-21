@@ -23,6 +23,9 @@ struct CounterScreen: View {
                     ItemsList()
                 } label: {
                     Image(systemName: "list.bullet")
+                        // The app tint fills the glass button on watchOS 26; a dark glyph keeps it readable.
+                        .foregroundStyle(.black)
+                        .fontWeight(.semibold)
                 }
                 .accessibilityLabel(WatchText.t("list", lang))
                 .disabled(!model.hasData)
@@ -32,6 +35,9 @@ struct CounterScreen: View {
                     model.undo()
                 } label: {
                     Image(systemName: "arrow.uturn.backward")
+                        // The app tint fills the glass button on watchOS 26; a dark glyph keeps it readable.
+                        .foregroundStyle(.black)
+                        .fontWeight(.semibold)
                 }
                 .accessibilityLabel(WatchText.t("undo", lang))
                 .disabled(model.current.map { !model.canUndo($0) } ?? true)
