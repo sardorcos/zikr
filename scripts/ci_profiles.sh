@@ -9,13 +9,14 @@ set -uo pipefail
 OUT="${1:-build}"; mkdir -p "$OUT"
 APP="$ZIKR_BUNDLE_ID"; WIDGETS="$ZIKR_BUNDLE_ID.widgets"; GROUP="group.$ZIKR_BUNDLE_ID"
 LOG="$OUT/profiles.log"; : > "$LOG"
-PROFILE_DIR="$HOME/Library/MobileDevice/Provisioning Profiles"
+# Xcode 16+ keeps profiles in UserData; older tools use MobileDevice.
+PROFILE_DIRS=("$HOME/Library/Developer/Xcode/UserData/Provisioning Profiles" "$HOME/Library/MobileDevice/Provisioning Profiles")
 clean() { sed 's/\x1b\[[0-9;]*m//g'; }
 
 # Prints OK when an installed App Store profile for $1 contains the App Group, otherwise MISSING.
 profile_status() {
   local status="MISSING" f
-  for f in "$PROFILE_DIR"/*.mobileprovision; do
+  for f in "${PROFILE_DIRS[0]}"/*.mobileprovision "${PROFILE_DIRS[1]}"/*.mobileprovision; do
     [[ -e "$f" ]] || continue
     security cms -D -i "$f" > "$OUT/profile.plist" 2>/dev/null || continue
     if python3 - "$OUT/profile.plist" "$1" "$GROUP" <<'PY'
@@ -50,17 +51,19 @@ for id in "$APP" "$WIDGETS"; do
     echo "Bundle ID $id exists ($rid)" | tee -a "$LOG"
   fi
   if [[ -n "$rid" ]]; then
-    app-store-connect bundle-ids enable-capabilities "$rid" --capability APP_GROUPS >>"$LOG" 2>&1 \
+    app-store-connect bundle-ids enable-capabilities "$rid" --capability "App Groups" >>"$LOG" 2>&1 \
       && echo "  App Groups capability enabled" | tee -a "$LOG"
   fi
   fetch_profile "$id" || { echo "Could not get a profile for $id:"; clean < "$LOG" | tail -n 15; exit 1; }
   if [[ "$(profile_status "$id")" != "OK" && -n "$rid" ]]; then
     # A profile made before the App Group was attached never picks it up: recreate it.
-    app-store-connect bundle-ids profiles "$rid" --json > "$OUT/profiles.json" 2>>"$LOG" || true
+    app-store-connect bundle-ids profiles --bundle-ids "$rid" --type IOS_APP_STORE --json > "$OUT/profiles.json" 2>>"$LOG" || true
     for pid in $(python3 -c 'import json,sys; print(" ".join(p["id"] for p in json.load(open(sys.argv[1])) if p["attributes"].get("profileType") == "IOS_APP_STORE"))' "$OUT/profiles.json" 2>/dev/null); do
       app-store-connect profiles delete "$pid" >>"$LOG" 2>&1 && echo "  Deleted stale profile $pid" | tee -a "$LOG"
     done
+    rm -f "${PROFILE_DIRS[0]}"/*.mobileprovision "${PROFILE_DIRS[1]}"/*.mobileprovision
     fetch_profile "$id" || true
+    for other in "$APP" "$WIDGETS"; do [[ "$other" == "$id" ]] || fetch_profile "$other" || true; done
   fi
   st=$(profile_status "$id")
   echo "  App Store profile for $id: App Group $GROUP $st" | tee -a "$LOG"
