@@ -55,7 +55,7 @@ fetch_profile() {
     certs=$(app-store-connect certificates list --type DISTRIBUTION IOS_DISTRIBUTION --json 2>>"$LOG" \
       | python3 -c 'import json,sys; print(" ".join(c["id"] for c in json.load(sys.stdin)))')
     [[ -n "$certs" ]] || { echo "No distribution certificates in the account" | tee -a "$LOG"; return 1; }
-    local name="ZIKR App Store"; [[ "$1" == *.widgets ]] && name="ZIKR Widgets App Store"
+    local name="ZIKR App Store"; [[ "$1" == *.widgets ]] && name="ZIKR Widgets App Store"; [[ "$1" == *.watchkitapp ]] && name="ZIKR Watch App Store"
     app-store-connect profiles create "$rid" --type IOS_APP_STORE --certificate-ids $certs --name "$name" >>"$LOG" 2>&1 \
       && echo "  Created profile '$name'" | tee -a "$LOG" || return 1
   fi
