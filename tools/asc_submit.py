@@ -168,14 +168,20 @@ def apply_app_info(asc, app, meta):
 
 
 AGE_SKIP = {"kidsAgeBand", "ageRatingOverride", "ageRatingOverrideV2", "koreaAgeRatingOverride",
-            "developerAgeRatingInfoUrl"}
+            "developerAgeRatingInfoUrl", "gracRatingClassificationNumber"}
+
+
+def age_rating_skipped(key):
+    # Region-specific overrides and classification numbers stay unset (Apple derives them).
+    k = key.lower()
+    return key in AGE_SKIP or "override" in k or "classification" in k or k.endswith("url")
 
 
 def apply_age_rating(asc, info):
     """Answers every question with "none"/"no" (4+). Attribute types differ between API revisions,
     so the type of each attribute is corrected from Apple's validation errors and retried."""
     decl = asc.get(f"/v1/appInfos/{info['id']}/ageRatingDeclaration")["data"]
-    attrs = {k: (False if isinstance(v, bool) else "NONE") for k, v in decl["attributes"].items() if k not in AGE_SKIP}
+    attrs = {k: (False if isinstance(v, bool) else "NONE") for k, v in decl["attributes"].items() if not age_rating_skipped(k)}
     for _ in range(6):
         try:
             asc.call("PATCH", f"/v1/ageRatingDeclarations/{decl['id']}", {"data": {"type": "ageRatingDeclarations", "id": decl["id"], "attributes": attrs}})
@@ -192,7 +198,8 @@ def apply_age_rating(asc, info):
                     attrs[key], fixed = False, True
                 elif "Expected a STRING" in detail or "Expected an ENUM" in detail.upper():
                     attrs[key], fixed = "NONE", True
-                elif "is not a valid" in detail or "not allowed" in detail:
+                elif ("is not a valid" in detail or "not allowed" in detail or "cannot be set" in detail
+                      or err.get("code", "").startswith("STATE_ERROR")):
                     attrs.pop(key)
                     fixed = True
             if not fixed:
