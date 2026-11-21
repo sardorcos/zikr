@@ -13,6 +13,20 @@ import sys
 raw = os.environ.get("APP_STORE_CONNECT_PRIVATE_KEY", "").strip().strip('"').strip("'")
 if not raw:
     sys.exit("APP_STORE_CONNECT_PRIVATE_KEY is empty")
+source = "inline"
+# codemagic-cli-tools style references: @file:/path or @env:NAME
+for _ in range(3):
+    if raw.startswith("@file:"):
+        path = os.path.expanduser(raw[len("@file:"):])
+        source = "file"
+        raw = open(path).read().strip()
+    elif raw.startswith("@env:"):
+        source = "env:" + raw[len("@env:"):]
+        raw = os.environ.get(raw[len("@env:"):], "").strip()
+    else:
+        break
+diag = {"source": source, "length": len(raw), "starts": raw[:5] if raw[:1] in "-@" else "other",
+        "has_begin": "BEGIN" in raw, "literal_backslash_n": "\\n" in raw, "newlines": raw.count("\n")}
 key = raw.replace("\\n", "\n").replace("\r", "")
 shape = "pem"
 if "BEGIN" not in key:
@@ -35,4 +49,8 @@ else:
 with open(sys.argv[1], "w") as f:
     f.write(key.strip() + "\n")
 lines = key.strip().splitlines()
-print(f"Key written ({shape}): {len(lines)} lines, header {lines[0][:31]!r}")
+diag.update(shape=shape, lines=len(lines), header=lines[0][:31])
+print("Key diagnostics:", diag)
+os.makedirs("build", exist_ok=True)
+with open("build/ci-key.log", "w") as f:
+    f.write(repr(diag) + "\n")
