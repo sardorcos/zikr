@@ -11,7 +11,7 @@
 | `ZIKRWidgets/` | Виджет, Live Activity, элемент Пункта управления |
 | `ZIKRTests/` | Юнит-тесты (Swift Testing) |
 | `Config/` | Info.plist и entitlements |
-| `tools/` | Генераторы: проект Xcode, локализация, иконки |
+| `tools/` | Генераторы: проект Xcode, локализация; `prepare_icon.py` готовит иконки из `docs/icon-master.png` |
 | `scripts/` | Настройка подписи и загрузка в TestFlight |
 | `docs/` | Политика конфиденциальности, тексты для App Store, аудит |
 
