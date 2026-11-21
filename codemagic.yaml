@@ -33,10 +33,10 @@ workflows:
       - name: Test, archive and upload to TestFlight
         script: |
           mkdir -p "$HOME/.appstoreconnect"
-          printf '%s' "$APP_STORE_CONNECT_PRIVATE_KEY" > "$HOME/.appstoreconnect/AuthKey.p8"
+          python3 scripts/ci_write_key.py "$HOME/.appstoreconnect/AuthKey_$APP_STORE_CONNECT_KEY_IDENTIFIER.p8"
           export ASC_KEY_ID="$APP_STORE_CONNECT_KEY_IDENTIFIER"
           export ASC_ISSUER_ID="$APP_STORE_CONNECT_ISSUER_ID"
-          export ASC_KEY_PATH="$HOME/.appstoreconnect/AuthKey.p8"
+          export ASC_KEY_PATH="$HOME/.appstoreconnect/AuthKey_$APP_STORE_CONNECT_KEY_IDENTIFIER.p8"
           ./scripts/testflight.sh
     artifacts:
       - build/*.log
