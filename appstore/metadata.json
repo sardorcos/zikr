@@ -1,0 +1,31 @@
+{
+  "bundleId": "com.neverlandplayworks.zikr",
+  "version": "1.0.0",
+  "copyright": "2026 Qosimbekov Sardorbek",
+  "primaryCategory": "LIFESTYLE",
+  "secondaryCategory": "PRODUCTIVITY",
+  "privacyPolicyUrl": "https://sardorcos.github.io/zikr/privacy-policy.html",
+  "supportUrl": "https://sardorcos.github.io/zikr/support.html",
+  "marketingUrl": "https://sardorcos.github.io/zikr/",
+  "reviewNotes": "ZIKR is a private, offline counter for iPhone with a companion Apple Watch app. Key features to review:\n1. Count tab: tap the large ring to add one. The \"Night mode\" button opens a black full-screen counter.\n2. The \"Lock Screen\" button starts a Live Activity; the + button on the Lock Screen / Dynamic Island adds one.\n3. Settings > \"Count without looking\" explains the Action button (Controls > \"ZIKR +1\"), Back Tap, the Control Center control and the interactive widget.\n4. List tab > + > \"New program\" creates a multi-step sequence that advances automatically.\n5. Apple Watch: open ZIKR on the watch; tapping anywhere on the screen (or Double Tap) adds one to the counter selected on the iPhone. Taps sync back to the iPhone through WatchConnectivity, also when the phone was out of reach.\nNo account, no network access, no data collection. All content (names, notes) is written by the user.",
+  "locales": {
+    "ru": {
+      "name": "ZIKR: счётчик и программы",
+      "subtitle": "Считайте, не глядя на экран",
+      "keywords": "счетчик,тасбих,четки,подсчет,кликер,привычки,трекер,виджет,apple watch,часы,статистика",
+      "promotionalText": "Плюс один кнопкой действия, с экрана блокировки, на Apple Watch или в ночном режиме. Программы из нескольких шагов и честная статистика.",
+      "description": "ZIKR — спокойный и надёжный счётчик для ежедневной практики. Без рекламы, без регистрации и без интернета.\n\nСЧИТАЙТЕ, НЕ ГЛЯДЯ НА ЭКРАН\n• Кнопка действия на iPhone 15 Pro и новее: одно нажатие — плюс один.\n• Экран блокировки и Dynamic Island: счёт с кнопкой + без разблокировки.\n• Интерактивный виджет и кнопка в Пункте управления.\n• Двойное касание задней панели iPhone через «Команды».\n• Apple Watch: касание экрана или двойное касание пальцами — плюс один; работает и без телефона рядом, счёт догонит iPhone.\n• Ночной режим: чёрный экран, весь экран — кнопка, экран не гаснет.\n\nПРОГРАММЫ ИЗ НЕСКОЛЬКИХ ШАГОВ\nСоберите свою последовательность, например 33 + 33 + 34. ZIKR сам переходит к следующему шагу, отмечает завершение сильной вибрацией и запоминает прогресс, даже если закрыть приложение. Названия шагов пишете вы.\n\nЧЕСТНАЯ СТАТИСТИКА\n• Нажатия по дням, тепловая карта за полгода, серии.\n• Мягкая серия: один пропущенный день в неделю её не прерывает.\n• Перенос начального числа и ручные исправления не считаются нажатиями.\n\nНАДЁЖНОСТЬ\n• Данные только на вашем iPhone и в его резервной копии iCloud.\n• Автокопия каждый день за последние 7 дней, экспорт и импорт файла.\n• Отмена последнего нажатия — даже если оно было вчера.\n\nА ТАКЖЕ\n• Цели: общая, дневная и сигнал каждые N нажатий.\n• Напоминания по дням недели.\n• Секундомер подхода.\n• Русский, узбекский (латиница и кириллица) и английский.\n• Светлое и тёмное оформление, крупный шрифт, VoiceOver.",
+      "screenshots": "screenshots/ru",
+      "watchScreenshots": "watch/ru"
+    },
+    "en-US": {
+      "name": "ZIKR: Counter & Programs",
+      "subtitle": "Count without looking",
+      "keywords": "counter,tally,tasbih,beads,clicker,habit,tracker,widget,apple watch,streak,count",
+      "promotionalText": "Add one with the Action button, from the Lock Screen, on Apple Watch or in night mode. Multi-step programs and honest statistics.",
+      "description": "ZIKR is a calm, reliable counter for your daily practice. No ads, no sign-up, no internet.\n\nCOUNT WITHOUT LOOKING\n• Action button on iPhone 15 Pro and later: one press, plus one.\n• Lock Screen and Dynamic Island: count with a + button without unlocking.\n• Interactive widget and a Control Center control.\n• Back Tap via Shortcuts.\n• Apple Watch: tap the screen or use Double Tap to add one — works even away from your iPhone and syncs later.\n• Night mode: a black screen where the whole display is the button, and it never locks.\n\nMULTI-STEP PROGRAMS\nBuild your own sequence such as 33 + 33 + 34. ZIKR moves to the next step automatically, marks completion with a strong haptic, and remembers progress even if you close the app. You name every step.\n\nHONEST STATISTICS\n• Taps per day, a six-month heatmap and streaks.\n• Gentle streaks: one missed day a week does not break them.\n• Carried-over starting numbers and manual corrections never count as taps.\n\nRELIABLE\n• Data stays on your iPhone and in its iCloud backup.\n• A daily automatic copy for the last 7 days, plus file export and import.\n• Undo the last tap — even if it was yesterday.\n\nALSO\n• Overall goal, daily goal, and a signal every N taps.\n• Reminders by weekday. Stopwatch.\n• Russian, Uzbek (Latin and Cyrillic) and English.\n• Light and dark appearance, Dynamic Type, VoiceOver.",
+      "screenshots": "screenshots/en-US",
+      "watchScreenshots": "watch/en-US"
+    }
+  }
+}

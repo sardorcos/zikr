@@ -130,3 +130,34 @@ workflows:
           sips -g pixelWidth -g pixelHeight screenshots/watch-*.png | grep pixel
     artifacts:
       - screenshots/*.png
+
+  # App Store Connect metadata (texts, categories, price, availability, age rating, screenshots
+  # incl. Apple Watch, review notes) from appstore/metadata.json, and attaching the latest build.
+  app-store-metadata:
+    name: ZIKR — App Store metadata
+    instance_type: mac_mini_m2
+    max_build_duration: 30
+    integrations:
+      app_store_connect: monetniy-mir-asc
+    scripts:
+      - name: Apply metadata
+        script: |
+          python3 -c "import cryptography" 2>/dev/null || pip3 install --quiet cryptography
+          python3 tools/asc_submit.py appstore/metadata.json
+
+  # Same as above, then sends the version to App Review. Needs the secure group "review_contact"
+  # (REVIEW_FIRST_NAME, REVIEW_LAST_NAME, REVIEW_PHONE, REVIEW_EMAIL).
+  app-store-submit:
+    name: ZIKR — submit for App Review
+    instance_type: mac_mini_m2
+    max_build_duration: 30
+    integrations:
+      app_store_connect: monetniy-mir-asc
+    environment:
+      groups:
+        - review_contact
+    scripts:
+      - name: Apply metadata and submit
+        script: |
+          python3 -c "import cryptography" 2>/dev/null || pip3 install --quiet cryptography
+          python3 tools/asc_submit.py appstore/metadata.json --submit
