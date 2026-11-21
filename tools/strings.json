@@ -1,0 +1,1277 @@
+{
+  "tab.count": {
+    "ru": "Счёт",
+    "uz": "Hisob",
+    "en": "Count"
+  },
+  "tab.items": {
+    "ru": "Список",
+    "uz": "Ro‘yxat",
+    "en": "List"
+  },
+  "tab.stats": {
+    "ru": "Статистика",
+    "uz": "Statistika",
+    "en": "Statistics"
+  },
+  "tab.settings": {
+    "ru": "Настройки",
+    "uz": "Sozlamalar",
+    "en": "Settings"
+  },
+  "common.cancel": {
+    "ru": "Отмена",
+    "uz": "Bekor qilish",
+    "en": "Cancel"
+  },
+  "common.save": {
+    "ru": "Сохранить",
+    "uz": "Saqlash",
+    "en": "Save"
+  },
+  "common.ok": {
+    "ru": "Понятно",
+    "uz": "Tushunarli",
+    "en": "OK"
+  },
+  "common.continue": {
+    "ru": "Далее",
+    "uz": "Davom etish",
+    "en": "Continue"
+  },
+  "common.error": {
+    "ru": "Не получилось",
+    "uz": "Amalga oshmadi",
+    "en": "Something went wrong"
+  },
+  "common.openSettings": {
+    "ru": "Открыть Настройки",
+    "uz": "Sozlamalarni ochish",
+    "en": "Open Settings"
+  },
+  "common.today": {
+    "ru": "Сегодня",
+    "uz": "Bugun",
+    "en": "Today"
+  },
+  "action.archive": {
+    "ru": "В архив",
+    "uz": "Arxivga",
+    "en": "Archive"
+  },
+  "action.correct": {
+    "ru": "Исправить число",
+    "uz": "Sonni tuzatish",
+    "en": "Correct value"
+  },
+  "action.create": {
+    "ru": "Создать",
+    "uz": "Yaratish",
+    "en": "Create"
+  },
+  "action.delete": {
+    "ru": "Удалить",
+    "uz": "O‘chirish",
+    "en": "Delete"
+  },
+  "action.edit": {
+    "ru": "Изменить",
+    "uz": "Tahrirlash",
+    "en": "Edit"
+  },
+  "action.lockScreen": {
+    "ru": "Экран блокировки",
+    "uz": "Qulf ekrani",
+    "en": "Lock Screen"
+  },
+  "action.lockScreenOn": {
+    "ru": "На экране блок.",
+    "uz": "Qulf ekranida",
+    "en": "On Lock Screen"
+  },
+  "action.more": {
+    "ru": "Действия",
+    "uz": "Amallar",
+    "en": "Actions"
+  },
+  "action.newCounter": {
+    "ru": "Новый счётчик",
+    "uz": "Yangi hisoblagich",
+    "en": "New counter"
+  },
+  "action.newProgram": {
+    "ru": "Новая программа",
+    "uz": "Yangi dastur",
+    "en": "New program"
+  },
+  "action.night": {
+    "ru": "Ночной режим",
+    "uz": "Tungi rejim",
+    "en": "Night mode"
+  },
+  "action.pin": {
+    "ru": "Закрепить",
+    "uz": "Qadash",
+    "en": "Pin"
+  },
+  "action.unpin": {
+    "ru": "Открепить",
+    "uz": "Qadashni olish",
+    "en": "Unpin"
+  },
+  "action.reminder": {
+    "ru": "Напоминание",
+    "uz": "Eslatma",
+    "en": "Reminder"
+  },
+  "action.restart": {
+    "ru": "Начать заново",
+    "uz": "Qaytadan boshlash",
+    "en": "Start over"
+  },
+  "action.restore": {
+    "ru": "Вернуть",
+    "uz": "Qaytarish",
+    "en": "Restore"
+  },
+  "action.undo": {
+    "ru": "Отменить",
+    "uz": "Bekor qilish",
+    "en": "Undo"
+  },
+  "home.archiveConfirm": {
+    "ru": "Переместить в архив?",
+    "uz": "Arxivga o‘tkazilsinmi?",
+    "en": "Move to archive?"
+  },
+  "home.archiveMessage": {
+    "ru": "История сохранится. Вернуть можно в разделе «Архив».",
+    "uz": "Tarix saqlanib qoladi. «Arxiv» bo‘limidan qaytarish mumkin.",
+    "en": "History is kept. You can restore it from Archive."
+  },
+  "home.restartConfirm": {
+    "ru": "Начать программу с первого шага?",
+    "uz": "Dastur birinchi qadamdan boshlansinmi?",
+    "en": "Start the program from the first step?"
+  },
+  "home.completedToday": {
+    "ru": "Пройдено сегодня: %@",
+    "uz": "Bugun yakunlandi: %@",
+    "en": "Completed today: %@"
+  },
+  "home.dailyGoal": {
+    "ru": "Сегодня %1$@ из %2$@",
+    "uz": "Bugun %2$@ dan %1$@",
+    "en": "Today %1$@ of %2$@"
+  },
+  "home.totalGoal": {
+    "ru": "Общая цель: %@",
+    "uz": "Umumiy maqsad: %@",
+    "en": "Overall goal: %@"
+  },
+  "home.emptyTitle": {
+    "ru": "Пока пусто",
+    "uz": "Hozircha bo‘sh",
+    "en": "Nothing here yet"
+  },
+  "home.emptyBody": {
+    "ru": "Создайте счётчик или программу из нескольких шагов. Названия и тексты вы пишете сами.",
+    "uz": "Hisoblagich yoki bir necha qadamli dastur yarating. Nom va matnlarni o‘zingiz yozasiz.",
+    "en": "Create a counter or a multi-step program. You write all names and notes yourself."
+  },
+  "home.rounds": {
+    "ru": "Кругов: %@",
+    "uz": "Davralar: %@",
+    "en": "Rounds: %@"
+  },
+  "home.switchA11y": {
+    "ru": "Текущий: %@. Выбрать другой",
+    "uz": "Joriy: %@. Boshqasini tanlash",
+    "en": "Current: %@. Choose another"
+  },
+  "home.today": {
+    "ru": "Сегодня: %@",
+    "uz": "Bugun: %@",
+    "en": "Today: %@"
+  },
+  "face.outOf": {
+    "ru": "из %@",
+    "uz": "%@ dan",
+    "en": "of %@"
+  },
+  "face.a11yValueOf": {
+    "ru": "%1$@ из %2$@",
+    "uz": "%2$@ dan %1$@",
+    "en": "%1$@ of %2$@"
+  },
+  "face.a11yHint": {
+    "ru": "Прибавить один",
+    "uz": "Bitta qo‘shish",
+    "en": "Add one"
+  },
+  "program.stepOf": {
+    "ru": "Шаг %1$@ из %2$@",
+    "uz": "%2$@ dan %1$@-qadam",
+    "en": "Step %1$@ of %2$@"
+  },
+  "program.next": {
+    "ru": "Далее: %@",
+    "uz": "Keyingi: %@",
+    "en": "Next: %@"
+  },
+  "completion.title": {
+    "ru": "Программа завершена",
+    "uz": "Dastur yakunlandi",
+    "en": "Program completed"
+  },
+  "completion.todayCount": {
+    "ru": "Сегодня пройдено: %@",
+    "uz": "Bugun yakunlandi: %@",
+    "en": "Completed today: %@"
+  },
+  "completion.again": {
+    "ru": "Продолжить",
+    "uz": "Davom etish",
+    "en": "Continue"
+  },
+  "completion.stats": {
+    "ru": "Открыть статистику",
+    "uz": "Statistikani ochish",
+    "en": "Open statistics"
+  },
+  "timer.title": {
+    "ru": "Секундомер",
+    "uz": "Sekundomer",
+    "en": "Stopwatch"
+  },
+  "timer.hint": {
+    "ru": "Встаёт на паузу, когда вы выходите из приложения",
+    "uz": "Ilovadan chiqqaningizda to‘xtaydi",
+    "en": "Pauses when you leave the app"
+  },
+  "timer.start": {
+    "ru": "Старт",
+    "uz": "Boshlash",
+    "en": "Start"
+  },
+  "timer.pause": {
+    "ru": "Пауза",
+    "uz": "Pauza",
+    "en": "Pause"
+  },
+  "night.exit": {
+    "ru": "Выйти из ночного режима",
+    "uz": "Tungi rejimdan chiqish",
+    "en": "Exit night mode"
+  },
+  "night.hint": {
+    "ru": "Нажимайте в любом месте экрана. Смахните вниз, чтобы выйти.",
+    "uz": "Ekranning istalgan joyiga bosing. Chiqish uchun pastga suring.",
+    "en": "Tap anywhere on the screen. Swipe down to exit."
+  },
+  "items.counters": {
+    "ru": "Счётчики",
+    "uz": "Hisoblagichlar",
+    "en": "Counters"
+  },
+  "items.countersFooter": {
+    "ru": "Активных: %1$@ из %2$@",
+    "uz": "Faol: %2$@ dan %1$@",
+    "en": "Active: %1$@ of %2$@"
+  },
+  "items.programs": {
+    "ru": "Программы",
+    "uz": "Dasturlar",
+    "en": "Programs"
+  },
+  "items.programsFooter": {
+    "ru": "Программа ведёт по шагам и сама переходит к следующему.",
+    "uz": "Dastur qadamma-qadam olib boradi va keyingisiga o‘zi o‘tadi.",
+    "en": "A program guides you step by step and moves on automatically."
+  },
+  "items.archive": {
+    "ru": "Архив (%@)",
+    "uz": "Arxiv (%@)",
+    "en": "Archive (%@)"
+  },
+  "items.pinned": {
+    "ru": "Закреплён",
+    "uz": "Qadalgan",
+    "en": "Pinned"
+  },
+  "items.current": {
+    "ru": "Текущий",
+    "uz": "Joriy",
+    "en": "Current"
+  },
+  "archive.title": {
+    "ru": "Архив",
+    "uz": "Arxiv",
+    "en": "Archive"
+  },
+  "archive.empty": {
+    "ru": "Архив пуст",
+    "uz": "Arxiv bo‘sh",
+    "en": "Archive is empty"
+  },
+  "archive.footer": {
+    "ru": "Смахните влево, чтобы вернуть или удалить.",
+    "uz": "Qaytarish yoki o‘chirish uchun chapga suring.",
+    "en": "Swipe left to restore or delete."
+  },
+  "archive.deleteConfirm": {
+    "ru": "Удалить навсегда?",
+    "uz": "Butunlay o‘chirilsinmi?",
+    "en": "Delete permanently?"
+  },
+  "archive.deleteMessage": {
+    "ru": "Счёт и вся история будут удалены. Это нельзя отменить.",
+    "uz": "Hisob va butun tarix o‘chiriladi. Buni qaytarib bo‘lmaydi.",
+    "en": "The count and all its history will be deleted. This cannot be undone."
+  },
+  "editor.title": {
+    "ru": "Название",
+    "uz": "Nomi",
+    "en": "Name"
+  },
+  "editor.titlePlaceholder": {
+    "ru": "Например, Утренний счёт",
+    "uz": "Masalan, Ertalabki hisob",
+    "en": "For example, Morning count"
+  },
+  "editor.programPlaceholder": {
+    "ru": "Например, Вечерняя программа",
+    "uz": "Masalan, Kechki dastur",
+    "en": "For example, Evening program"
+  },
+  "editor.programFooter": {
+    "ru": "Программа — это несколько шагов подряд. Названия шагов вы пишете сами.",
+    "uz": "Dastur — ketma-ket bir necha qadam. Qadam nomlarini o‘zingiz yozasiz.",
+    "en": "A program is a sequence of steps. You name the steps yourself."
+  },
+  "editor.initial": {
+    "ru": "Начать с",
+    "uz": "Boshlang‘ich son",
+    "en": "Start from"
+  },
+  "editor.initialFooter": {
+    "ru": "Можно перенести число из другого счётчика. Оно не попадёт в статистику дня.",
+    "uz": "Boshqa hisoblagichdagi sonni ko‘chirish mumkin. U kunlik statistikaga kirmaydi.",
+    "en": "You can carry over a number from elsewhere. It does not count as today's taps."
+  },
+  "editor.goals": {
+    "ru": "Цели",
+    "uz": "Maqsadlar",
+    "en": "Goals"
+  },
+  "editor.hasGoal": {
+    "ru": "Общая цель",
+    "uz": "Umumiy maqsad",
+    "en": "Overall goal"
+  },
+  "editor.goal": {
+    "ru": "Цель",
+    "uz": "Maqsad",
+    "en": "Goal"
+  },
+  "editor.dailyGoal": {
+    "ru": "Цель на день",
+    "uz": "Kunlik maqsad",
+    "en": "Daily goal"
+  },
+  "editor.optional": {
+    "ru": "Нет",
+    "uz": "Yo‘q",
+    "en": "None"
+  },
+  "editor.interval": {
+    "ru": "Сигнал каждые",
+    "uz": "Har nechada signal",
+    "en": "Signal every"
+  },
+  "editor.intervalFooter": {
+    "ru": "Сильная вибрация на каждом круге, например каждые 33. Оставьте пустым, чтобы отключить.",
+    "uz": "Har davrada kuchli tebranish, masalan har 33 da. O‘chirish uchun bo‘sh qoldiring.",
+    "en": "A strong vibration at every round, for example every 33. Leave empty to turn off."
+  },
+  "editor.note": {
+    "ru": "Заметка",
+    "uz": "Izoh",
+    "en": "Note"
+  },
+  "editor.notePlaceholder": {
+    "ru": "Ваш текст — он будет виден на экране счёта",
+    "uz": "Matningiz — u hisob ekranida ko‘rinadi",
+    "en": "Your text — shown on the counting screen"
+  },
+  "editor.editCounter": {
+    "ru": "Счётчик",
+    "uz": "Hisoblagich",
+    "en": "Counter"
+  },
+  "editor.editProgram": {
+    "ru": "Программа",
+    "uz": "Dastur",
+    "en": "Program"
+  },
+  "editor.templates": {
+    "ru": "Быстрая структура",
+    "uz": "Tezkor tuzilma",
+    "en": "Quick structure"
+  },
+  "editor.steps": {
+    "ru": "Шаги",
+    "uz": "Qadamlar",
+    "en": "Steps"
+  },
+  "editor.stepPlaceholder": {
+    "ru": "Название шага",
+    "uz": "Qadam nomi",
+    "en": "Step name"
+  },
+  "editor.stepTarget": {
+    "ru": "Сколько раз",
+    "uz": "Necha marta",
+    "en": "How many times"
+  },
+  "editor.addStep": {
+    "ru": "Добавить шаг",
+    "uz": "Qadam qo‘shish",
+    "en": "Add step"
+  },
+  "editor.stepsTotal": {
+    "ru": "Всего за программу: %@",
+    "uz": "Dastur bo‘yicha jami: %@",
+    "en": "Total per run: %@"
+  },
+  "correct.newValue": {
+    "ru": "Новое число",
+    "uz": "Yangi son",
+    "en": "New value"
+  },
+  "correct.footer": {
+    "ru": "Исправление меняет итог, но не считается нажатиями и не попадает в статистику дня. Отменить нажатия до исправления будет нельзя.",
+    "uz": "Tuzatish jami sonni o‘zgartiradi, lekin bosish hisoblanmaydi va kunlik statistikaga kirmaydi. Tuzatishdan oldingi bosishlarni bekor qilib bo‘lmaydi.",
+    "en": "A correction changes the total but is not counted as taps or added to daily statistics. Taps before the correction can no longer be undone."
+  },
+  "reminders.enable": {
+    "ru": "Напоминать",
+    "uz": "Eslatib turish",
+    "en": "Remind me"
+  },
+  "reminders.footer": {
+    "ru": "Уведомление с названием «%@».",
+    "uz": "«%@» nomi bilan bildirishnoma.",
+    "en": "A notification titled “%@”."
+  },
+  "reminders.time": {
+    "ru": "Время",
+    "uz": "Vaqt",
+    "en": "Time"
+  },
+  "reminders.days": {
+    "ru": "Дни",
+    "uz": "Kunlar",
+    "en": "Days"
+  },
+  "reminders.everyDay": {
+    "ru": "Каждый день",
+    "uz": "Har kuni",
+    "en": "Every day"
+  },
+  "reminders.weekdays": {
+    "ru": "По будням",
+    "uz": "Ish kunlari",
+    "en": "Weekdays"
+  },
+  "reminders.limit": {
+    "ru": "Можно настроить до %@ напоминаний.",
+    "uz": "%@ tagacha eslatma sozlash mumkin.",
+    "en": "You can set up to %@ reminders."
+  },
+  "reminders.deniedTitle": {
+    "ru": "Уведомления выключены",
+    "uz": "Bildirishnomalar o‘chirilgan",
+    "en": "Notifications are off"
+  },
+  "reminders.deniedMessage": {
+    "ru": "Разрешите уведомления для ZIKR в Настройках, чтобы получать напоминания.",
+    "uz": "Eslatmalarni olish uchun Sozlamalarda ZIKR bildirishnomalariga ruxsat bering.",
+    "en": "Allow notifications for ZIKR in Settings to get reminders."
+  },
+  "reminder.body": {
+    "ru": "Время продолжить",
+    "uz": "Davom ettirish vaqti",
+    "en": "Time to continue"
+  },
+  "live.title": {
+    "ru": "Экран блокировки",
+    "uz": "Qulf ekrani",
+    "en": "Lock Screen"
+  },
+  "live.add": {
+    "ru": "Плюс один",
+    "uz": "Bitta qo‘shish",
+    "en": "Add one"
+  },
+  "live.done": {
+    "ru": "Программа завершена",
+    "uz": "Dastur yakunlandi",
+    "en": "Program completed"
+  },
+  "live.disabled": {
+    "ru": "Live Activity выключены. Включите их: Настройки → ZIKR → Live Activity.",
+    "uz": "Live Activity o‘chirilgan. Yoqish: Sozlamalar → ZIKR → Live Activity.",
+    "en": "Live Activities are turned off. Turn them on in Settings → ZIKR → Live Activities."
+  },
+  "live.failed": {
+    "ru": "Не удалось показать счёт на экране блокировки. Попробуйте ещё раз.",
+    "uz": "Hisobni qulf ekranida ko‘rsatib bo‘lmadi. Qayta urinib ko‘ring.",
+    "en": "Could not show the count on the Lock Screen. Please try again."
+  },
+  "stats.all": {
+    "ru": "Все счётчики и программы",
+    "uz": "Barcha hisoblagich va dasturlar",
+    "en": "All counters and programs"
+  },
+  "stats.scopeA11y": {
+    "ru": "Что показывать",
+    "uz": "Nimani ko‘rsatish",
+    "en": "What to show"
+  },
+  "stats.today": {
+    "ru": "Сегодня",
+    "uz": "Bugun",
+    "en": "Today"
+  },
+  "stats.week": {
+    "ru": "За 7 дней",
+    "uz": "7 kunda",
+    "en": "Last 7 days"
+  },
+  "stats.streak": {
+    "ru": "Серия",
+    "uz": "Ketma-ketlik",
+    "en": "Streak"
+  },
+  "stats.streakNote": {
+    "ru": "Серия не прерывается, если пропустить один день за неделю.",
+    "uz": "Haftada bir kun o‘tkazib yuborilsa, ketma-ketlik uzilmaydi.",
+    "en": "Missing one day in a week does not break the streak."
+  },
+  "stats.activeDays": {
+    "ru": "Дней с записями",
+    "uz": "Faol kunlar",
+    "en": "Active days"
+  },
+  "stats.completions": {
+    "ru": "Пройдено программ",
+    "uz": "Yakunlangan dasturlar",
+    "en": "Programs completed"
+  },
+  "stats.total": {
+    "ru": "Текущий итог",
+    "uz": "Joriy jami",
+    "en": "Current total"
+  },
+  "stats.allTaps": {
+    "ru": "Всего нажатий",
+    "uz": "Jami bosishlar",
+    "en": "Total taps"
+  },
+  "stats.time": {
+    "ru": "Время по секундомеру",
+    "uz": "Sekundomer vaqti",
+    "en": "Stopwatch time"
+  },
+  "stats.byDay": {
+    "ru": "По дням",
+    "uz": "Kunlar bo‘yicha",
+    "en": "By day"
+  },
+  "stats.period": {
+    "ru": "Период",
+    "uz": "Davr",
+    "en": "Period"
+  },
+  "stats.7days": {
+    "ru": "7 дней",
+    "uz": "7 kun",
+    "en": "7 days"
+  },
+  "stats.30days": {
+    "ru": "30 дней",
+    "uz": "30 kun",
+    "en": "30 days"
+  },
+  "stats.day": {
+    "ru": "День",
+    "uz": "Kun",
+    "en": "Day"
+  },
+  "stats.taps": {
+    "ru": "Нажатия",
+    "uz": "Bosishlar",
+    "en": "Taps"
+  },
+  "stats.heatmap": {
+    "ru": "Полгода",
+    "uz": "Yarim yil",
+    "en": "Last 6 months"
+  },
+  "stats.less": {
+    "ru": "Меньше",
+    "uz": "Kam",
+    "en": "Less"
+  },
+  "stats.more": {
+    "ru": "Больше",
+    "uz": "Ko‘p",
+    "en": "More"
+  },
+  "stats.corrections": {
+    "ru": "Исправления",
+    "uz": "Tuzatishlar",
+    "en": "Corrections"
+  },
+  "stats.baseline": {
+    "ru": "Начало с %@",
+    "uz": "%@ dan boshlangan",
+    "en": "Started at %@"
+  },
+  "stats.footnote": {
+    "ru": "Учитываются только нажатия. Начальные числа и исправления в статистику дня не входят.",
+    "uz": "Faqat bosishlar hisobga olinadi. Boshlang‘ich sonlar va tuzatishlar kunlik statistikaga kirmaydi.",
+    "en": "Only taps are counted. Starting values and corrections are not part of daily statistics."
+  },
+  "unit.days": {
+    "ru": "%@ день|%@ дня|%@ дней",
+    "uz": "%@ kun",
+    "en": "%@ day|%@ days"
+  },
+  "settings.general": {
+    "ru": "Основное",
+    "uz": "Asosiy",
+    "en": "General"
+  },
+  "settings.language": {
+    "ru": "Язык",
+    "uz": "Til",
+    "en": "Language"
+  },
+  "settings.languageSystem": {
+    "ru": "Как в системе",
+    "uz": "Tizimdagidek",
+    "en": "System"
+  },
+  "settings.appearance": {
+    "ru": "Оформление",
+    "uz": "Ko‘rinish",
+    "en": "Appearance"
+  },
+  "settings.haptics": {
+    "ru": "Вибрация",
+    "uz": "Tebranish",
+    "en": "Haptics"
+  },
+  "settings.counting": {
+    "ru": "Счёт",
+    "uz": "Hisob",
+    "en": "Counting"
+  },
+  "settings.keepScreenOn": {
+    "ru": "Не гасить экран во время счёта",
+    "uz": "Hisob paytida ekran o‘chmasin",
+    "en": "Keep screen on while counting"
+  },
+  "settings.keepScreenOnFooter": {
+    "ru": "Экран не гаснет 2 минуты после последнего нажатия и всё время в ночном режиме. В ночном режиме экран чёрный, а на iPhone с OLED-экраном чёрный цвет почти не тратит заряд.",
+    "uz": "Ekran oxirgi bosishdan keyin 2 daqiqa va tungi rejimda doim o‘chmaydi. Tungi rejimda ekran qora, OLED ekranli iPhone’da qora rang deyarli quvvat sarflamaydi.",
+    "en": "The screen stays on for 2 minutes after the last tap and all the time in night mode. Night mode is black, which uses almost no power on iPhones with OLED displays."
+  },
+  "settings.nightDigits": {
+    "ru": "Показывать цифры ночью",
+    "uz": "Tunda raqamlarni ko‘rsatish",
+    "en": "Show digits at night"
+  },
+  "settings.nightBrightness": {
+    "ru": "Яркость цифр",
+    "uz": "Raqamlar yorqinligi",
+    "en": "Digit brightness"
+  },
+  "settings.handsFree": {
+    "ru": "Счёт без взгляда на экран",
+    "uz": "Ekranga qaramasdan hisoblash",
+    "en": "Count without looking"
+  },
+  "settings.handsFreeFooter": {
+    "ru": "Кнопка действия, двойное касание по задней панели, экран блокировки, виджеты и Пункт управления.",
+    "uz": "Harakat tugmasi, orqa panelga ikki marta tegish, qulf ekrani, vidjetlar va Boshqaruv markazi.",
+    "en": "Action button, Back Tap, Lock Screen, widgets and Control Center."
+  },
+  "settings.reminders": {
+    "ru": "Напоминания",
+    "uz": "Eslatmalar",
+    "en": "Reminders"
+  },
+  "settings.noReminders": {
+    "ru": "Нет напоминаний",
+    "uz": "Eslatmalar yo‘q",
+    "en": "No reminders"
+  },
+  "settings.remindersFooter": {
+    "ru": "Напоминание настраивается для каждого счётчика в меню «Действия» на экране счёта.",
+    "uz": "Eslatma har bir hisoblagich uchun hisob ekranidagi «Amallar» menyusida sozlanadi.",
+    "en": "Set a reminder for each counter from the Actions menu on the Count screen."
+  },
+  "settings.data": {
+    "ru": "Данные",
+    "uz": "Ma’lumotlar",
+    "en": "Data"
+  },
+  "settings.dataFooter": {
+    "ru": "Все данные хранятся только на этом iPhone и попадают в его резервную копию iCloud. Приложение ничего не отправляет в интернет.",
+    "uz": "Barcha ma’lumotlar faqat shu iPhone’da saqlanadi va uning iCloud zaxira nusxasiga tushadi. Ilova internetga hech narsa yubormaydi.",
+    "en": "All data stays on this iPhone and is included in its iCloud backup. The app sends nothing to the internet."
+  },
+  "settings.about": {
+    "ru": "О приложении",
+    "uz": "Ilova haqida",
+    "en": "About"
+  },
+  "settings.aboutFooter": {
+    "ru": "Без рекламы, без аналитики и без учётной записи.",
+    "uz": "Reklamasiz, analitikasiz va hisob qaydnomasiz.",
+    "en": "No ads, no analytics, no account."
+  },
+  "settings.version": {
+    "ru": "Версия",
+    "uz": "Versiya",
+    "en": "Version"
+  },
+  "settings.privacy": {
+    "ru": "Политика конфиденциальности",
+    "uz": "Maxfiylik siyosati",
+    "en": "Privacy Policy"
+  },
+  "settings.support": {
+    "ru": "Поддержка",
+    "uz": "Yordam",
+    "en": "Support"
+  },
+  "appearance.system": {
+    "ru": "Как в системе",
+    "uz": "Tizimdagidek",
+    "en": "System"
+  },
+  "appearance.light": {
+    "ru": "Светлое",
+    "uz": "Yorug‘",
+    "en": "Light"
+  },
+  "appearance.dark": {
+    "ru": "Тёмное",
+    "uz": "Qorong‘i",
+    "en": "Dark"
+  },
+  "backup.export": {
+    "ru": "Сохранить резервную копию",
+    "uz": "Zaxira nusxani saqlash",
+    "en": "Save a backup"
+  },
+  "backup.import": {
+    "ru": "Восстановить из файла",
+    "uz": "Fayldan tiklash",
+    "en": "Restore from file"
+  },
+  "backup.snapshots": {
+    "ru": "Автокопии за 7 дней",
+    "uz": "7 kunlik avtomatik nusxalar",
+    "en": "Automatic copies (7 days)"
+  },
+  "backup.snapshotsFooter": {
+    "ru": "Каждый день приложение сохраняет копию данных на iPhone. Перед восстановлением текущие данные тоже сохраняются.",
+    "uz": "Ilova har kuni iPhone’da ma’lumotlar nusxasini saqlaydi. Tiklashdan oldin joriy ma’lumotlar ham saqlanadi.",
+    "en": "Every day the app keeps a copy of your data on this iPhone. Current data is also saved before any restore."
+  },
+  "backup.noSnapshots": {
+    "ru": "Автокопий пока нет",
+    "uz": "Hozircha avtomatik nusxalar yo‘q",
+    "en": "No automatic copies yet"
+  },
+  "backup.restore": {
+    "ru": "Заменить данные",
+    "uz": "Ma’lumotlarni almashtirish",
+    "en": "Replace data"
+  },
+  "backup.restoreConfirm": {
+    "ru": "Заменить текущие данные копией?",
+    "uz": "Joriy ma’lumotlar nusxa bilan almashtirilsinmi?",
+    "en": "Replace current data with this copy?"
+  },
+  "backup.preview": {
+    "ru": "В копии счётчиков: %1$@, программ: %2$@. Текущие данные будут сохранены отдельно.",
+    "uz": "Nusxada hisoblagichlar: %1$@, dasturlar: %2$@. Joriy ma’lumotlar alohida saqlanadi.",
+    "en": "The copy has %1$@ counters and %2$@ programs. Your current data will be kept separately."
+  },
+  "error.notFound": {
+    "ru": "Этот счётчик больше не существует.",
+    "uz": "Bu hisoblagich endi mavjud emas.",
+    "en": "This counter no longer exists."
+  },
+  "error.archived": {
+    "ru": "Счётчик в архиве. Верните его, чтобы продолжить.",
+    "uz": "Hisoblagich arxivda. Davom etish uchun uni qaytaring.",
+    "en": "This counter is archived. Restore it to continue."
+  },
+  "error.invalidTitle": {
+    "ru": "Введите название до 80 символов.",
+    "uz": "80 belgigacha nom kiriting.",
+    "en": "Enter a name up to 80 characters."
+  },
+  "error.valueOutOfRange": {
+    "ru": "Число должно быть от 0 до 1 000 000 000.",
+    "uz": "Son 0 dan 1 000 000 000 gacha bo‘lishi kerak.",
+    "en": "The number must be between 0 and 1,000,000,000."
+  },
+  "error.goalOutOfRange": {
+    "ru": "Цель должна быть от 1 до 1 000 000 000.",
+    "uz": "Maqsad 1 dan 1 000 000 000 gacha bo‘lishi kerak.",
+    "en": "The goal must be between 1 and 1,000,000,000."
+  },
+  "error.intervalOutOfRange": {
+    "ru": "Интервал сигнала должен быть от 1 до 1 000 000 000 или пустым.",
+    "uz": "Signal oralig‘i 1 dan 1 000 000 000 gacha yoki bo‘sh bo‘lishi kerak.",
+    "en": "The signal interval must be between 1 and 1,000,000,000, or empty."
+  },
+  "error.dailyGoalOutOfRange": {
+    "ru": "Цель на день должна быть от 1 до 1 000 000 000 или пустой.",
+    "uz": "Kunlik maqsad 1 dan 1 000 000 000 gacha yoki bo‘sh bo‘lishi kerak.",
+    "en": "The daily goal must be between 1 and 1,000,000,000, or empty."
+  },
+  "error.stepTargetOutOfRange": {
+    "ru": "В каждом шаге укажите, сколько раз: от 1 до 1 000 000 000.",
+    "uz": "Har bir qadamda necha marta ekanini kiriting: 1 dan 1 000 000 000 gacha.",
+    "en": "Give each step a count from 1 to 1,000,000,000."
+  },
+  "error.counterLimit": {
+    "ru": "Можно держать до 100 активных счётчиков. Переместите ненужные в архив.",
+    "uz": "100 tagacha faol hisoblagich bo‘lishi mumkin. Keraksizlarini arxivga o‘tkazing.",
+    "en": "You can have up to 100 active counters. Archive the ones you no longer use."
+  },
+  "error.programLimit": {
+    "ru": "Можно держать до 50 активных программ. Переместите ненужные в архив.",
+    "uz": "50 tagacha faol dastur bo‘lishi mumkin. Keraksizlarini arxivga o‘tkazing.",
+    "en": "You can have up to 50 active programs. Archive the ones you no longer use."
+  },
+  "error.stepLimit": {
+    "ru": "В программе может быть до 30 шагов.",
+    "uz": "Dasturda 30 tagacha qadam bo‘lishi mumkin.",
+    "en": "A program can have up to 30 steps."
+  },
+  "error.noSteps": {
+    "ru": "Добавьте хотя бы один шаг.",
+    "uz": "Kamida bitta qadam qo‘shing.",
+    "en": "Add at least one step."
+  },
+  "error.pinLimit": {
+    "ru": "Закрепить можно не больше 3. Сначала открепите другой.",
+    "uz": "Ko‘pi bilan 3 tasini qadash mumkin. Avval boshqasini oling.",
+    "en": "You can pin up to 3. Unpin another one first."
+  },
+  "error.reminderLimit": {
+    "ru": "Можно настроить до 8 напоминаний. Отключите одно из существующих.",
+    "uz": "8 tagacha eslatma sozlash mumkin. Mavjudlaridan birini o‘chiring.",
+    "en": "You can set up to 8 reminders. Turn one of them off first."
+  },
+  "error.nothingToUndo": {
+    "ru": "Нечего отменять.",
+    "uz": "Bekor qiladigan narsa yo‘q.",
+    "en": "Nothing to undo."
+  },
+  "error.noActiveItem": {
+    "ru": "Сначала создайте счётчик.",
+    "uz": "Avval hisoblagich yarating.",
+    "en": "Create a counter first."
+  },
+  "error.saveFailed": {
+    "ru": "Не удалось сохранить. Приложение повторит попытку автоматически.",
+    "uz": "Saqlab bo‘lmadi. Ilova avtomatik qayta urinadi.",
+    "en": "Could not save. The app will retry automatically."
+  },
+  "error.backupInvalid": {
+    "ru": "Это не резервная копия ZIKR или файл повреждён.",
+    "uz": "Bu ZIKR zaxira nusxasi emas yoki fayl buzilgan.",
+    "en": "This is not a ZIKR backup, or the file is damaged."
+  },
+  "error.backupNewer": {
+    "ru": "Копия создана более новой версией ZIKR. Обновите приложение.",
+    "uz": "Nusxa ZIKR’ning yangiroq versiyasida yaratilgan. Ilovani yangilang.",
+    "en": "This copy was made by a newer version of ZIKR. Please update the app."
+  },
+  "error.backupTooLarge": {
+    "ru": "Файл слишком большой для резервной копии ZIKR.",
+    "uz": "Fayl ZIKR zaxira nusxasi uchun juda katta.",
+    "en": "The file is too large to be a ZIKR backup."
+  },
+  "recovered.title": {
+    "ru": "Часть данных не прочиталась",
+    "uz": "Ma’lumotlarning bir qismi o‘qilmadi",
+    "en": "Some data could not be read"
+  },
+  "recovered.message": {
+    "ru": "Повреждённые записи пропущены, остальное на месте. Исходный файл сохранён рядом с данными.",
+    "uz": "Buzilgan yozuvlar o‘tkazib yuborildi, qolgani joyida. Asl fayl ma’lumotlar yonida saqlandi.",
+    "en": "Damaged entries were skipped; everything else is intact. The original file was kept next to your data."
+  },
+  "recovery.corruptTitle": {
+    "ru": "Не удалось прочитать данные",
+    "uz": "Ma’lumotlarni o‘qib bo‘lmadi",
+    "en": "Your data could not be read"
+  },
+  "recovery.corruptMessage": {
+    "ru": "Файл ничем не перезаписан и сохранён отдельно. Восстановите автокопию или отправьте файл себе, чтобы не потерять его.",
+    "uz": "Fayl hech narsa bilan almashtirilmadi va alohida saqlandi. Avtomatik nusxani tiklang yoki faylni yo‘qotmaslik uchun o‘zingizga yuboring.",
+    "en": "The file was not overwritten and has been kept aside. Restore an automatic copy, or send the file to yourself so it is not lost."
+  },
+  "recovery.newerTitle": {
+    "ru": "Нужна новая версия",
+    "uz": "Yangi versiya kerak",
+    "en": "Update required"
+  },
+  "recovery.newerMessage": {
+    "ru": "Данные сохранены более новой версией ZIKR. Обновите приложение в App Store — ничего не потеряется.",
+    "uz": "Ma’lumotlar ZIKR’ning yangiroq versiyasida saqlangan. Ilovani App Store’da yangilang — hech narsa yo‘qolmaydi.",
+    "en": "Your data was saved by a newer version of ZIKR. Update the app from the App Store — nothing will be lost."
+  },
+  "recovery.shareFile": {
+    "ru": "Отправить файл данных",
+    "uz": "Ma’lumotlar faylini yuborish",
+    "en": "Share the data file"
+  },
+  "recovery.snapshots": {
+    "ru": "Автокопии",
+    "uz": "Avtomatik nusxalar",
+    "en": "Automatic copies"
+  },
+  "recovery.startFresh": {
+    "ru": "Начать с чистого листа",
+    "uz": "Yangidan boshlash",
+    "en": "Start fresh"
+  },
+  "recovery.startFreshFooter": {
+    "ru": "Повреждённый файл останется на iPhone, его можно будет отправить позже.",
+    "uz": "Buzilgan fayl iPhone’da qoladi, uni keyinroq yuborish mumkin.",
+    "en": "The damaged file stays on the iPhone and can still be shared later."
+  },
+  "onboarding.1.title": {
+    "ru": "Ваш ежедневный счёт",
+    "uz": "Kundalik hisobingiz",
+    "en": "Your daily count"
+  },
+  "onboarding.1.body": {
+    "ru": "Свободные счётчики и программы из нескольких шагов. Названия и тексты вы пишете сами.",
+    "uz": "Erkin hisoblagichlar va bir necha qadamli dasturlar. Nom va matnlarni o‘zingiz yozasiz.",
+    "en": "Free counters and multi-step programs. You write every name and note yourself."
+  },
+  "onboarding.2.title": {
+    "ru": "Считайте, не глядя",
+    "uz": "Qaramasdan hisoblang",
+    "en": "Count without looking"
+  },
+  "onboarding.2.body": {
+    "ru": "Кнопка действия, экран блокировки, виджет, Пункт управления и чёрный ночной режим, где весь экран — кнопка.",
+    "uz": "Harakat tugmasi, qulf ekrani, vidjet, Boshqaruv markazi va butun ekran tugma bo‘lgan qora tungi rejim.",
+    "en": "Action button, Lock Screen, widget, Control Center and a black night mode where the whole screen is the button."
+  },
+  "onboarding.3.title": {
+    "ru": "Только у вас",
+    "uz": "Faqat sizda",
+    "en": "Private by design"
+  },
+  "onboarding.3.body": {
+    "ru": "Без рекламы, аналитики и регистрации. Данные хранятся на iPhone, а приложение каждый день делает автокопию.",
+    "uz": "Reklama, analitika va ro‘yxatdan o‘tishsiz. Ma’lumotlar iPhone’da saqlanadi, ilova har kuni avtomatik nusxa oladi.",
+    "en": "No ads, no analytics, no sign-up. Data stays on your iPhone and the app makes a copy every day."
+  },
+  "onboarding.4.title": {
+    "ru": "С чего начнём?",
+    "uz": "Nimadan boshlaymiz?",
+    "en": "Where to start?"
+  },
+  "onboarding.4.body": {
+    "ru": "Всё можно переименовать и изменить позже.",
+    "uz": "Hammasini keyinroq qayta nomlash va o‘zgartirish mumkin.",
+    "en": "You can rename and change everything later."
+  },
+  "onboarding.start": {
+    "ru": "Начать",
+    "uz": "Boshlash",
+    "en": "Get started"
+  },
+  "onboarding.skip": {
+    "ru": "Пропустить",
+    "uz": "O‘tkazib yuborish",
+    "en": "Skip"
+  },
+  "starter.free": {
+    "ru": "Свободный счёт",
+    "uz": "Erkin hisob",
+    "en": "Free count"
+  },
+  "starter.freeDetail": {
+    "ru": "Без цели, сигнал каждые 33",
+    "uz": "Maqsadsiz, har 33 da signal",
+    "en": "No goal, signal every 33"
+  },
+  "starter.freeTitle": {
+    "ru": "Мой счёт",
+    "uz": "Mening hisobim",
+    "en": "My count"
+  },
+  "starter.goal": {
+    "ru": "Цель 100",
+    "uz": "Maqsad 100",
+    "en": "Goal of 100"
+  },
+  "starter.goalDetail": {
+    "ru": "Счётчик с прогрессом до 100",
+    "uz": "100 gacha jarayonli hisoblagich",
+    "en": "A counter with progress to 100"
+  },
+  "starter.goalTitle": {
+    "ru": "Цель 100",
+    "uz": "Maqsad 100",
+    "en": "Goal of 100"
+  },
+  "starter.program": {
+    "ru": "Программа 33 · 33 · 34",
+    "uz": "Dastur 33 · 33 · 34",
+    "en": "Program 33 · 33 · 34"
+  },
+  "starter.programDetail": {
+    "ru": "Три шага с автопереходом",
+    "uz": "Avtomatik o‘tishli uch qadam",
+    "en": "Three steps that advance automatically"
+  },
+  "starter.programTitle": {
+    "ru": "Моя программа",
+    "uz": "Mening dasturim",
+    "en": "My program"
+  },
+  "starter.step": {
+    "ru": "Шаг %@",
+    "uz": "%@-qadam",
+    "en": "Step %@"
+  },
+  "starter.none": {
+    "ru": "Создам сам",
+    "uz": "O‘zim yarataman",
+    "en": "I'll set it up myself"
+  },
+  "starter.noneDetail": {
+    "ru": "Начать с пустого списка",
+    "uz": "Bo‘sh ro‘yxatdan boshlash",
+    "en": "Start with an empty list"
+  },
+  "handsFree.intro": {
+    "ru": "ZIKR прибавляет единицу к текущему счётчику или шагу программы, даже когда приложение закрыто.",
+    "uz": "ZIKR ilova yopiq bo‘lsa ham joriy hisoblagich yoki dastur qadamiga bitta qo‘shadi.",
+    "en": "ZIKR adds one to the current counter or program step even when the app is closed."
+  },
+  "handsFree.action.title": {
+    "ru": "Кнопка действия (iPhone 15 Pro и новее)",
+    "uz": "Harakat tugmasi (iPhone 15 Pro va yangilari)",
+    "en": "Action button (iPhone 15 Pro and later)"
+  },
+  "handsFree.action.steps": {
+    "ru": "Откройте Настройки → Кнопка действия.\nВыберите «Элементы управления» и найдите «ZIKR +1» (или «Быстрая команда» → «Плюс один»).\nТеперь нажатие кнопки прибавляет единицу, смотреть на экран не нужно.",
+    "uz": "Sozlamalar → Harakat tugmasi bo‘limini oching.\n«Boshqaruv elementlari»ni tanlang va «ZIKR +1»ni toping (yoki «Tezkor buyruq» → «Bitta qo‘shish»).\nEndi tugmani bosish bitta qo‘shadi, ekranga qarash shart emas.",
+    "en": "Open Settings → Action Button.\nChoose Controls and pick “ZIKR +1” (or Shortcut → “Add one”).\nNow a press of the button adds one — no need to look at the screen."
+  },
+  "handsFree.backTap.title": {
+    "ru": "Касание задней панели",
+    "uz": "Orqa panelga tegish",
+    "en": "Back Tap"
+  },
+  "handsFree.backTap.steps": {
+    "ru": "В приложении «Команды» нажмите +, добавьте действие «Плюс один» из ZIKR и сохраните команду.\nОткройте Настройки → Универсальный доступ → Касание → Касание задней панели.\nВыберите «Двойное касание» и созданную команду.\nДважды коснитесь задней панели iPhone, чтобы прибавить один.",
+    "uz": "«Buyruqlar» ilovasida + ni bosing, ZIKR’dan «Bitta qo‘shish» amalini qo‘shing va buyruqni saqlang.\nSozlamalar → Universal kirish → Teginish → Orqa panelga teginish bo‘limini oching.\n«Ikki marta teginish»ni va yaratilgan buyruqni tanlang.\nBitta qo‘shish uchun iPhone orqasiga ikki marta teging.",
+    "en": "In the Shortcuts app tap +, add the “Add one” action from ZIKR and save the shortcut.\nOpen Settings → Accessibility → Touch → Back Tap.\nChoose Double Tap and select your shortcut.\nDouble-tap the back of your iPhone to add one."
+  },
+  "handsFree.live.title": {
+    "ru": "Экран блокировки и Dynamic Island",
+    "uz": "Qulf ekrani va Dynamic Island",
+    "en": "Lock Screen and Dynamic Island"
+  },
+  "handsFree.live.steps": {
+    "ru": "На экране «Счёт» нажмите «Экран блокировки».\nЗаблокируйте iPhone: счёт с кнопкой + появится на экране блокировки и в Dynamic Island.\nНажимайте +, чтобы считать без разблокировки.",
+    "uz": "«Hisob» ekranida «Qulf ekrani»ni bosing.\niPhone’ni qulflang: + tugmali hisob qulf ekranida va Dynamic Island’da paydo bo‘ladi.\nQulfni ochmasdan hisoblash uchun + ni bosing.",
+    "en": "On the Count screen tap “Lock Screen”.\nLock your iPhone: the count with a + button appears on the Lock Screen and in the Dynamic Island.\nTap + to count without unlocking."
+  },
+  "handsFree.widget.title": {
+    "ru": "Виджет",
+    "uz": "Vidjet",
+    "en": "Widget"
+  },
+  "handsFree.widget.steps": {
+    "ru": "Коснитесь и удерживайте экран «Домой» или экран блокировки, затем «Изменить» → «Добавить виджет».\nНайдите ZIKR и выберите размер.\nНажимайте + на виджете, чтобы считать.",
+    "uz": "Asosiy ekran yoki qulf ekranini bosib turing, so‘ng «Tahrirlash» → «Vidjet qo‘shish».\nZIKR’ni toping va o‘lchamni tanlang.\nHisoblash uchun vidjetdagi + ni bosing.",
+    "en": "Touch and hold the Home Screen or Lock Screen, then Edit → Add Widget.\nFind ZIKR and choose a size.\nTap + on the widget to count."
+  },
+  "handsFree.control.title": {
+    "ru": "Пункт управления",
+    "uz": "Boshqaruv markazi",
+    "en": "Control Center"
+  },
+  "handsFree.control.steps": {
+    "ru": "Откройте Пункт управления и нажмите + в левом верхнем углу.\nВыберите «Добавить элемент» и найдите «ZIKR +1».\nКнопка прибавляет единицу к текущему счётчику.",
+    "uz": "Boshqaruv markazini oching va yuqori chap burchakdagi + ni bosing.\n«Element qo‘shish»ni tanlang va «ZIKR +1»ni toping.\nTugma joriy hisoblagichga bitta qo‘shadi.",
+    "en": "Open Control Center and tap + in the top-left corner.\nTap Add a Control and find “ZIKR +1”.\nThe control adds one to the current counter."
+  },
+  "handsFree.night.title": {
+    "ru": "Ночной режим",
+    "uz": "Tungi rejim",
+    "en": "Night mode"
+  },
+  "handsFree.night.steps": {
+    "ru": "На экране «Счёт» нажмите «Ночной режим».\nНажимайте в любом месте чёрного экрана — экран не погаснет.\nСмахните вниз или нажмите ×, чтобы выйти.",
+    "uz": "«Hisob» ekranida «Tungi rejim»ni bosing.\nQora ekranning istalgan joyiga bosing — ekran o‘chmaydi.\nChiqish uchun pastga suring yoki × ni bosing.",
+    "en": "On the Count screen tap “Night mode”.\nTap anywhere on the black screen — it will not lock.\nSwipe down or tap × to exit."
+  },
+  "widget.name": {
+    "ru": "Текущий счёт",
+    "uz": "Joriy hisob",
+    "en": "Current count"
+  },
+  "widget.description": {
+    "ru": "Показывает текущий счётчик и прибавляет единицу.",
+    "uz": "Joriy hisoblagichni ko‘rsatadi va bitta qo‘shadi.",
+    "en": "Shows the current counter and adds one."
+  },
+  "widget.empty": {
+    "ru": "Откройте ZIKR и создайте счётчик",
+    "uz": "ZIKR’ni oching va hisoblagich yarating",
+    "en": "Open ZIKR and create a counter"
+  },
+  "control.label": {
+    "ru": "ZIKR +1",
+    "uz": "ZIKR +1",
+    "en": "ZIKR +1"
+  },
+  "control.name": {
+    "ru": "ZIKR +1",
+    "uz": "ZIKR +1",
+    "en": "ZIKR +1"
+  },
+  "control.description": {
+    "ru": "Прибавляет единицу к текущему счётчику.",
+    "uz": "Joriy hisoblagichga bitta qo‘shadi.",
+    "en": "Adds one to the current counter."
+  },
+  "intent.increment.title": {
+    "ru": "Плюс один",
+    "uz": "Bitta qo‘shish",
+    "en": "Add one"
+  },
+  "intent.increment.description": {
+    "ru": "Прибавляет единицу к текущему счётчику ZIKR.",
+    "uz": "ZIKR’dagi joriy hisoblagichga bitta qo‘shadi.",
+    "en": "Adds one to the current counter in ZIKR."
+  },
+  "intent.undo.title": {
+    "ru": "Отменить последнее нажатие",
+    "uz": "Oxirgi bosishni bekor qilish",
+    "en": "Undo last tap"
+  },
+  "intent.undo.description": {
+    "ru": "Убирает последнее нажатие из текущего счётчика.",
+    "uz": "Joriy hisoblagichdan oxirgi bosishni olib tashlaydi.",
+    "en": "Removes the last tap from the current counter."
+  },
+  "intent.current.title": {
+    "ru": "Текущий счёт",
+    "uz": "Joriy hisob",
+    "en": "Current count"
+  },
+  "intent.current.description": {
+    "ru": "Сообщает значение текущего счётчика.",
+    "uz": "Joriy hisoblagich qiymatini aytadi.",
+    "en": "Tells the value of the current counter."
+  },
+  "intent.param.item": {
+    "ru": "Счётчик",
+    "uz": "Hisoblagich",
+    "en": "Counter"
+  },
+  "intent.error.noActive": {
+    "ru": "Откройте ZIKR и сначала создайте счётчик.",
+    "uz": "ZIKR’ni oching va avval hisoblagich yarating.",
+    "en": "Open ZIKR and create a counter first."
+  },
+  "intent.error.generic": {
+    "ru": "Не удалось обновить счётчик.",
+    "uz": "Hisoblagichni yangilab bo‘lmadi.",
+    "en": "Could not update the counter."
+  },
+  "shortcut.increment": {
+    "ru": "Плюс один",
+    "uz": "Bitta qo‘shish",
+    "en": "Add one"
+  },
+  "shortcut.undo": {
+    "ru": "Отменить",
+    "uz": "Bekor qilish",
+    "en": "Undo"
+  },
+  "shortcut.current": {
+    "ru": "Текущий счёт",
+    "uz": "Joriy hisob",
+    "en": "Current count"
+  },
+  "infoplist.CFBundleDisplayName": {
+    "ru": "ZIKR",
+    "uz": "ZIKR",
+    "en": "ZIKR"
+  },
+  "a11y.round": {
+    "ru": "Круг завершён",
+    "uz": "Davra yakunlandi",
+    "en": "Round complete"
+  },
+  "a11y.dailyGoalReached": {
+    "ru": "Цель на день выполнена",
+    "uz": "Kunlik maqsad bajarildi",
+    "en": "Daily goal reached"
+  },
+  "a11y.goalReached": {
+    "ru": "Общая цель достигнута",
+    "uz": "Umumiy maqsadga erishildi",
+    "en": "Overall goal reached"
+  },
+  "a11y.stepDone": {
+    "ru": "Шаг завершён, следующий шаг",
+    "uz": "Qadam yakunlandi, keyingi qadam",
+    "en": "Step complete, next step"
+  },
+  "entity.item": {
+    "ru": "Счётчик",
+    "uz": "Hisoblagich",
+    "en": "Counter"
+  },
+  "widget.configTitle": {
+    "ru": "Счётчик",
+    "uz": "Hisoblagich",
+    "en": "Counter"
+  },
+  "widget.configDescription": {
+    "ru": "Выберите, какой счётчик показывать. Пусто — текущий.",
+    "uz": "Qaysi hisoblagich ko‘rsatilishini tanlang. Bo‘sh — joriy.",
+    "en": "Choose which counter the widget shows. Leave empty to follow the current one."
+  },
+  "settings.appGroupMissing": {
+    "ru": "Виджеты не видят данные: в подписи приложения не настроена App Group. Пересоберите приложение с автоматической подписью.",
+    "uz": "Vidjetlar ma’lumotlarni ko‘rmaydi: ilova imzosida App Group sozlanmagan. Ilovani avtomatik imzo bilan qayta yig‘ing.",
+    "en": "Widgets cannot see your data: the App Group is not set up in the app's signing. Rebuild with automatic signing."
+  }
+}

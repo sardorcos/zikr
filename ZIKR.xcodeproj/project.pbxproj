@@ -1,0 +1,546 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7743B4C28BF616A80E8B0510 /* ZIKRWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 558DFA043BDB5A3A0A57304D; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		34E2CB58C802797472569A8A = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98F54143AB4E86B28C3AFEE0;
+			proxyType = 1;
+			remoteGlobalIDString = 7A400EDFE2240D6F34DB14CB;
+			remoteInfo = ZIKRWidgets;
+		};
+		E347255DC3F4C3767D23B375 = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98F54143AB4E86B28C3AFEE0;
+			proxyType = 1;
+			remoteGlobalIDString = 173FEB50ADBA89A6C8F193E1;
+			remoteInfo = ZIKR;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DD2791BB3951B1C11A6EB808 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7743B4C28BF616A80E8B0510,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		9152F5F3EB21680C9B9022DB /* ZIKR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZIKR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		558DFA043BDB5A3A0A57304D /* ZIKRWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ZIKRWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C0D897238014140DBA71545 /* ZIKRTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZIKRTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		3ECA01332D3D763A509514CA /* ZIKR */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ZIKR;
+			sourceTree = "<group>";
+		};
+		5DA4FA2C478A554EF9CF9141 /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		A4FD43A941582FD97C0B82F5 /* ZIKRWidgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ZIKRWidgets;
+			sourceTree = "<group>";
+		};
+		94152A2D67A54DBBAA09C291 /* ZIKRTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ZIKRTests;
+			sourceTree = "<group>";
+		};
+		B34D717B61455EBCFE9FFB09 /* Config */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Config;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0622C9826A94C02081D0DBF1 = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AC4D0BF4EB77C5A0FABD009 = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7747B6D5E318B8114657CE3 = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B28B7AF69320201D1CF206EB = {
+			isa = PBXGroup;
+			children = (
+				3ECA01332D3D763A509514CA,
+				5DA4FA2C478A554EF9CF9141,
+				A4FD43A941582FD97C0B82F5,
+				94152A2D67A54DBBAA09C291,
+				B34D717B61455EBCFE9FFB09,
+				FBDC4F23F93125BBEEAE800C,
+			);
+			sourceTree = "<group>";
+		};
+		FBDC4F23F93125BBEEAE800C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9152F5F3EB21680C9B9022DB,
+				558DFA043BDB5A3A0A57304D,
+				1C0D897238014140DBA71545,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		173FEB50ADBA89A6C8F193E1 /* ZIKR */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC5D7F5E8ED99501BF438497;
+			buildPhases = (
+				FADDE049E14230D76C857C93,
+				0622C9826A94C02081D0DBF1,
+				DBFDD9F3454D267306FEB0BB,
+				DD2791BB3951B1C11A6EB808,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				88B5BF29F2570D7FCAEFE9F4,
+			);
+			fileSystemSynchronizedGroups = (
+				3ECA01332D3D763A509514CA,
+				5DA4FA2C478A554EF9CF9141,
+			);
+			name = ZIKR;
+			packageProductDependencies = (
+			);
+			productName = ZIKR;
+			productReference = 9152F5F3EB21680C9B9022DB;
+			productType = "com.apple.product-type.application";
+		};
+		7A400EDFE2240D6F34DB14CB /* ZIKRWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20E357EA33F98937363294F0;
+			buildPhases = (
+				CCF17682C179A9C358C26D7C,
+				7AC4D0BF4EB77C5A0FABD009,
+				53C8BFF7D9F1DB3F3634DFB3,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A4FD43A941582FD97C0B82F5,
+				5DA4FA2C478A554EF9CF9141,
+			);
+			name = ZIKRWidgets;
+			packageProductDependencies = (
+			);
+			productName = ZIKRWidgets;
+			productReference = 558DFA043BDB5A3A0A57304D;
+			productType = "com.apple.product-type.app-extension";
+		};
+		BF7CCAB90F7B05C2595D3444 /* ZIKRTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C41EDC42B9D3D2958682F9CC;
+			buildPhases = (
+				636720734B51C28493C5DC16,
+				E7747B6D5E318B8114657CE3,
+				BE86D9AAD7E2ACC8891E7BBF,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				19BAE1D4D6341EBECE239592,
+			);
+			fileSystemSynchronizedGroups = (
+				94152A2D67A54DBBAA09C291,
+			);
+			name = ZIKRTests;
+			packageProductDependencies = (
+			);
+			productName = ZIKRTests;
+			productReference = 1C0D897238014140DBA71545;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		98F54143AB4E86B28C3AFEE0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					173FEB50ADBA89A6C8F193E1 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					7A400EDFE2240D6F34DB14CB = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					BF7CCAB90F7B05C2595D3444 = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = 173FEB50ADBA89A6C8F193E1;
+					};
+				};
+			};
+			buildConfigurationList = 5636BA33F8A7B513012B9728;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ru,
+				uz,
+				"uz-Cyrl",
+			);
+			mainGroup = B28B7AF69320201D1CF206EB;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = FBDC4F23F93125BBEEAE800C;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				173FEB50ADBA89A6C8F193E1,
+				7A400EDFE2240D6F34DB14CB,
+				BF7CCAB90F7B05C2595D3444,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DBFDD9F3454D267306FEB0BB = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53C8BFF7D9F1DB3F3634DFB3 = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE86D9AAD7E2ACC8891E7BBF = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FADDE049E14230D76C857C93 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCF17682C179A9C358C26D7C = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		636720734B51C28493C5DC16 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		88B5BF29F2570D7FCAEFE9F4 = {
+			isa = PBXTargetDependency;
+			target = 7A400EDFE2240D6F34DB14CB;
+			targetProxy = 34E2CB58C802797472569A8A;
+		};
+		19BAE1D4D6341EBECE239592 = {
+			isa = PBXTargetDependency;
+			target = 173FEB50ADBA89A6C8F193E1;
+			targetProxy = E347255DC3F4C3767D23B375;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E8579BA9494E19DFCE917416 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				ZIKR_BUNDLE_ID = com.example.zikr;
+				ZIKR_PRIVACY_URL = "";
+				ZIKR_SUPPORT_URL = "";
+			};
+			name = Debug;
+		};
+		575F439B9037AFE78AA0276B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+				ZIKR_BUNDLE_ID = com.example.zikr;
+				ZIKR_PRIVACY_URL = "";
+				ZIKR_SUPPORT_URL = "";
+			};
+			name = Release;
+		};
+		8F8875C8F4B923C9B6C6667D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Config/ZIKR.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Config/ZIKR-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(ZIKR_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		7AE1DBCE051F6C89D4578E82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Config/ZIKR.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Config/ZIKR-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(ZIKR_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		41D7D23E71658B589B9AD179 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Config/ZIKRWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Config/ZIKRWidgets-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(ZIKR_BUNDLE_ID).widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		7942A04ED05A659FF950D83F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Config/ZIKRWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Config/ZIKRWidgets-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(ZIKR_BUNDLE_ID).widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		61FC3EB731A61E4C60452FD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(ZIKR_BUNDLE_ID).tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZIKR.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ZIKR";
+			};
+			name = Debug;
+		};
+		670253A5D72C741F7161585D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(ZIKR_BUNDLE_ID).tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZIKR.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ZIKR";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5636BA33F8A7B513012B9728 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8579BA9494E19DFCE917416,
+				575F439B9037AFE78AA0276B,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC5D7F5E8ED99501BF438497 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F8875C8F4B923C9B6C6667D,
+				7AE1DBCE051F6C89D4578E82,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20E357EA33F98937363294F0 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41D7D23E71658B589B9AD179,
+				7942A04ED05A659FF950D83F,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C41EDC42B9D3D2958682F9CC = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61FC3EB731A61E4C60452FD1,
+				670253A5D72C741F7161585D,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 98F54143AB4E86B28C3AFEE0 /* Project object */;
+}
