@@ -124,3 +124,13 @@ No account, no network access, no data collection. All content (names, notes) is
 - Выбор счётчика или программы, отмена.
 - Синхронизация через WatchConnectivity: iPhone присылает снимок после каждого изменения, часы отправляют каждое нажатие с уникальным ID через `transferUserInfo` (доставка гарантирована системой). Неподтверждённые нажатия хранятся на часах и показываются сразу.
 - Скриншот для App Store (обязателен для приложений с часами): workflow `zikr-screenshots`, Apple Watch Series (46 мм).
+
+## Отправка (Codemagic + App Store Connect API)
+
+Метаданные лежат в `appstore/metadata.json`, скриншоты в `appstore/screenshots/<locale>` (iPhone 6.9") и `appstore/watch/<locale>` (Apple Watch). Применяет их `tools/asc_submit.py`.
+
+1. `ios-testflight`: сборка с приложением для часов загружается в App Store Connect.
+2. `zikr-screenshots`: скриншоты iPhone и Apple Watch.
+3. `app-store-metadata`: тексты, категории, цена «бесплатно», все страны, возраст 4+, скриншоты, заметки для ревью, привязка последней сборки.
+4. Вручную в App Store Connect: App Privacy → «Data Not Collected» → Publish (у API нет этой функции).
+5. `app-store-submit`: то же самое плюс контакт для ревью из защищённой группы `review_contact`, затем отправка на App Review.
