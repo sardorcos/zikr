@@ -39,6 +39,18 @@
 
 Без своего Mac: отправьте репозиторий на GitHub, добавьте секреты `ASC_KEY_ID`, `ASC_ISSUER_ID`, `ASC_KEY_P8` и запустите workflow **TestFlight** (`.github/workflows/testflight.yml`).
 
+## Codemagic (основной способ)
+
+Приложение `zikr` в Codemagic собирается из `codemagic.yaml` (workflow **ZIKR → TestFlight**). Запуск: кнопка Start new build в Codemagic или push в `main` с ручным запуском. Шаги:
+
+1. Team ID и Bundle ID определяются через App Store Connect (`scripts/ci_detect.sh`), приложение ищется по названию «ZIKR».
+2. `scripts/ci_signing.sh` ставит сертификаты Development и Distribution, выпущенные под постоянный ключ `CERTIFICATE_PRIVATE_KEY` (защищённая переменная, группа `zikr_signing`).
+3. `scripts/ci_profiles.sh` создаёт App Store-профили для приложения и виджетов, проверяет в них App Group `group.com.neverlandplayworks.zikr` (при необходимости пересоздаёт) и включает ручную подпись.
+4. `scripts/testflight.sh` прогоняет тесты, архивирует и экспортирует IPA.
+5. Публикация Codemagic загружает IPA в App Store Connect через интеграцию `monetniy-mir-asc`.
+
+Номер сборки — дата и время (`YYYYMMDD.HHMM`), поэтому сборки из Codemagic и с Mac можно чередовать.
+
 ## Генераторы
 
 ```bash

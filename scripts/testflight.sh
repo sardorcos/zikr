@@ -16,7 +16,8 @@ if grep -q '"ZIKR_BUNDLE_ID": "com.example.zikr"' tools/gen_project.py; then
 fi
 
 # Date-based build numbers always increase, whether built locally or on CI.
-BUILD_NUMBER="${BUILD_NUMBER:-$(date -u +%Y%m%d.%H%M)}"
+# (CI services such as Codemagic export their own small BUILD_NUMBER, so a separate name is used.)
+BUILD_NUMBER="${ZIKR_BUILD_NUMBER:-$(date -u +%Y%m%d.%H%M)}"
 OUT="build"
 ARCHIVE="$OUT/ZIKR.xcarchive"
 AUTH=(-allowProvisioningUpdates -authenticationKeyPath "$ASC_KEY_PATH" -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID")
