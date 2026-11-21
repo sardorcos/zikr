@@ -111,6 +111,7 @@ workflows:
       - name: Apple Watch screenshots
         script: |
           set -euo pipefail
+          mkdir -p screenshots
           xcodebuild -project ZIKR.xcodeproj -target ZIKRWatch -configuration Debug -sdk watchsimulator \
             SYMROOT="$PWD/build/watch" CODE_SIGNING_ALLOWED=NO build | tail -n 3
           WAPP=$(ls -d build/watch/Debug-watchsimulator/ZIKRWatch.app)
@@ -121,7 +122,6 @@ workflows:
           for LANG in ru en; do
             W=$(xcrun simctl create "Watch-$LANG" "$WTYPE" "$WRT")
             xcrun simctl boot "$W"; xcrun simctl bootstatus "$W" -b
-            xcrun simctl status_bar "$W" override --time "9:41" || true
             xcrun simctl install "$W" "$WAPP"
             xcrun simctl launch "$W" "$WBID" -AppleLanguages "($LANG)" -ZIKRScreenshots >/dev/null; sleep 60
             xcrun simctl terminate "$W" "$WBID" || true
