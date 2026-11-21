@@ -7,7 +7,7 @@
 # the Developer portal. This script checks the profiles and explains exactly what is missing.
 set -uo pipefail
 OUT="${1:-build}"; mkdir -p "$OUT"
-APP="$ZIKR_BUNDLE_ID"; WIDGETS="$ZIKR_BUNDLE_ID.widgets"; GROUP="group.$ZIKR_BUNDLE_ID"
+APP="$ZIKR_BUNDLE_ID"; WIDGETS="$ZIKR_BUNDLE_ID.widgets"; WATCH="$ZIKR_BUNDLE_ID.watchkitapp"; GROUP="group.$ZIKR_BUNDLE_ID"
 LOG="$OUT/profiles.log"; : > "$LOG"
 # Xcode 16+ keeps profiles in UserData; older tools use MobileDevice.
 PROFILE_DIRS=("$HOME/Library/Developer/Xcode/UserData/Provisioning Profiles" "$HOME/Library/MobileDevice/Provisioning Profiles")
@@ -94,6 +94,18 @@ for id in "$APP" "$WIDGETS"; do
   echo "  App Store profile for $id: App Group $GROUP $st" | tee -a "$LOG"
   [[ "$st" == "OK" ]] || need_portal=1
 done
+
+# Apple Watch app: its own bundle ID and App Store profile; it talks to the phone through
+# WatchConnectivity, so it needs no App Group.
+wrid=$(bundle_rid "$WATCH")
+if [[ -z "$wrid" ]]; then
+  app-store-connect bundle-ids create "$WATCH" --name "ZIKR Watch" --platform IOS --json > "$OUT/bid.json" 2>>"$LOG" || true
+  echo "Registered bundle ID $WATCH" | tee -a "$LOG"
+else
+  echo "Bundle ID $WATCH exists ($wrid)" | tee -a "$LOG"
+fi
+fetch_profile "$WATCH" || { echo "Could not get a profile for $WATCH:"; clean < "$LOG" | tail -n 15; exit 1; }
+echo "  App Store profile for $WATCH: OK" | tee -a "$LOG"
 
 if [[ $need_portal -eq 1 ]]; then
   cat <<MSG | tee -a "$LOG"

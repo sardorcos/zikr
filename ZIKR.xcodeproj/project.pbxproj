@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7743B4C28BF616A80E8B0510 /* ZIKRWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 558DFA043BDB5A3A0A57304D; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3CECEEA81FBFC5EA8DC9079F /* ZIKRWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9AF36D55160E0D3A411F5B39; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +26,13 @@
 			remoteGlobalIDString = 173FEB50ADBA89A6C8F193E1;
 			remoteInfo = ZIKR;
 		};
+		1F0928C718DB102FAD1A0C48 = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98F54143AB4E86B28C3AFEE0;
+			proxyType = 1;
+			remoteGlobalIDString = 9E92B48728C892B154B29966;
+			remoteInfo = ZIKRWatch;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,11 +47,23 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7C88E11B1C89DDC4716FB1C0 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				3CECEEA81FBFC5EA8DC9079F,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9152F5F3EB21680C9B9022DB /* ZIKR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZIKR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		558DFA043BDB5A3A0A57304D /* ZIKRWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ZIKRWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AF36D55160E0D3A411F5B39 /* ZIKRWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZIKRWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C0D897238014140DBA71545 /* ZIKRTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZIKRTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -73,6 +93,16 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		AF8D3AF091410AD209E68F84 /* ZIKRWatch */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ZIKRWatch;
+			sourceTree = "<group>";
+		};
+		69C260B045387A20D655E773 /* WatchShared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = WatchShared;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +127,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F7FE37C503E038F094A553A1 = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -108,6 +145,8 @@
 				A4FD43A941582FD97C0B82F5,
 				94152A2D67A54DBBAA09C291,
 				B34D717B61455EBCFE9FFB09,
+				AF8D3AF091410AD209E68F84,
+				69C260B045387A20D655E773,
 				FBDC4F23F93125BBEEAE800C,
 			);
 			sourceTree = "<group>";
@@ -118,6 +157,7 @@
 				9152F5F3EB21680C9B9022DB,
 				558DFA043BDB5A3A0A57304D,
 				1C0D897238014140DBA71545,
+				9AF36D55160E0D3A411F5B39,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,21 +173,47 @@
 				0622C9826A94C02081D0DBF1,
 				DBFDD9F3454D267306FEB0BB,
 				DD2791BB3951B1C11A6EB808,
+				7C88E11B1C89DDC4716FB1C0,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				88B5BF29F2570D7FCAEFE9F4,
+				BBB270687F47C6F3BF886C31,
 			);
 			fileSystemSynchronizedGroups = (
 				3ECA01332D3D763A509514CA,
 				5DA4FA2C478A554EF9CF9141,
+				69C260B045387A20D655E773,
 			);
 			name = ZIKR;
 			packageProductDependencies = (
 			);
 			productName = ZIKR;
 			productReference = 9152F5F3EB21680C9B9022DB;
+			productType = "com.apple.product-type.application";
+		};
+		9E92B48728C892B154B29966 /* ZIKRWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 034EF4ABCBA6956D3173DF78;
+			buildPhases = (
+				0121B006101E5F2ED288442D,
+				F7FE37C503E038F094A553A1,
+				65C9D1E715F999E60638EB8E,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				AF8D3AF091410AD209E68F84,
+				69C260B045387A20D655E773,
+			);
+			name = ZIKRWatch;
+			packageProductDependencies = (
+			);
+			productName = ZIKRWatch;
+			productReference = 9AF36D55160E0D3A411F5B39;
 			productType = "com.apple.product-type.application";
 		};
 		7A400EDFE2240D6F34DB14CB /* ZIKRWidgets */ = {
@@ -212,6 +278,9 @@
 					7A400EDFE2240D6F34DB14CB = {
 						CreatedOnToolsVersion = 26.0;
 					};
+					9E92B48728C892B154B29966 = {
+						CreatedOnToolsVersion = 26.0;
+					};
 					BF7CCAB90F7B05C2595D3444 = {
 						CreatedOnToolsVersion = 26.0;
 						TestTargetID = 173FEB50ADBA89A6C8F193E1;
@@ -238,6 +307,7 @@
 				173FEB50ADBA89A6C8F193E1,
 				7A400EDFE2240D6F34DB14CB,
 				BF7CCAB90F7B05C2595D3444,
+				9E92B48728C892B154B29966,
 			);
 		};
 /* End PBXProject section */
@@ -258,6 +328,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BE86D9AAD7E2ACC8891E7BBF = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65C9D1E715F999E60638EB8E = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -288,6 +365,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0121B006101E5F2ED288442D = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -300,6 +384,11 @@
 			isa = PBXTargetDependency;
 			target = 173FEB50ADBA89A6C8F193E1;
 			targetProxy = E347255DC3F4C3767D23B375;
+		};
+		BBB270687F47C6F3BF886C31 = {
+			isa = PBXTargetDependency;
+			target = 9E92B48728C892B154B29966;
+			targetProxy = 1F0928C718DB102FAD1A0C48;
 		};
 /* End PBXTargetDependency section */
 
@@ -501,6 +590,60 @@
 			};
 			name = Release;
 		};
+		5B706D7621CF0BFF19847FE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ZIKR;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "$(ZIKR_BUNDLE_ID)";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(ZIKR_BUNDLE_ID).watchkitapp";
+				PRODUCT_NAME = ZIKRWatch;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		E8F42629833ED95B2F1C6868 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ZIKR;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "$(ZIKR_BUNDLE_ID)";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(ZIKR_BUNDLE_ID).watchkitapp";
+				PRODUCT_NAME = ZIKRWatch;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -536,6 +679,15 @@
 			buildConfigurations = (
 				61FC3EB731A61E4C60452FD1,
 				670253A5D72C741F7161585D,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		034EF4ABCBA6956D3173DF78 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B706D7621CF0BFF19847FE3,
+				E8F42629833ED95B2F1C6868,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

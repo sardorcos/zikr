@@ -96,6 +96,26 @@ WIDGETS = {**PLATFORM,
     "SKIP_INSTALL": "YES",
     "SWIFT_EMIT_LOC_STRINGS": "YES",
 }
+WATCH = {
+    "ASSETCATALOG_COMPILER_APPICON_NAME": "AppIcon",
+    "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "AccentColor",
+    "CODE_SIGN_STYLE": "Automatic",
+    "ENABLE_PREVIEWS": "YES",
+    "GENERATE_INFOPLIST_FILE": "YES",
+    "INFOPLIST_KEY_CFBundleDisplayName": "ZIKR",
+    "INFOPLIST_KEY_UISupportedInterfaceOrientations": "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown",
+    "INFOPLIST_KEY_WKCompanionAppBundleIdentifier": "$(ZIKR_BUNDLE_ID)",
+    "INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp": "NO",
+    "LD_RUNPATH_SEARCH_PATHS": ["$(inherited)", "@executable_path/Frameworks"],
+    "PRODUCT_BUNDLE_IDENTIFIER": "$(ZIKR_BUNDLE_ID).watchkitapp",
+    "PRODUCT_NAME": "ZIKRWatch",
+    "SDKROOT": "watchos",
+    "SKIP_INSTALL": "YES",
+    "SUPPORTED_PLATFORMS": "watchos watchsimulator",
+    "SWIFT_EMIT_LOC_STRINGS": "NO",
+    "TARGETED_DEVICE_FAMILY": "4",
+    "WATCHOS_DEPLOYMENT_TARGET": "11.0",
+}
 TESTS = {**PLATFORM,
     "BUNDLE_LOADER": "$(TEST_HOST)",
     "CODE_SIGN_STYLE": "Automatic",
@@ -108,6 +128,8 @@ TESTS = {**PLATFORM,
 
 I = {k: oid(k) for k in [
     "project", "main", "products", "g.ZIKR", "g.Shared", "g.ZIKRWidgets", "g.ZIKRTests", "g.Config",
+    "g.ZIKRWatch", "g.WatchShared", "p.watch", "t.watch", "src.watch", "fw.watch", "res.watch",
+    "embedwatch.app", "bf.embedwatch", "proxy.watch", "dep.watch", "cl.watch", "c.watch.d", "c.watch.r",
     "p.app", "p.widgets", "p.tests", "t.app", "t.widgets", "t.tests",
     "src.app", "fw.app", "res.app", "embed.app", "src.widgets", "fw.widgets", "res.widgets",
     "src.tests", "fw.tests", "res.tests", "bf.embed", "proxy.widgets", "proxy.app", "dep.widgets", "dep.app",
@@ -185,8 +207,9 @@ def pbxproj() -> str:
     o = []
     o.append("/* Begin PBXBuildFile section */\n")
     o.append(f"\t\t{I['bf.embed']} /* ZIKRWidgets.appex in Embed Foundation Extensions */ = {{isa = PBXBuildFile; fileRef = {I['p.widgets']}; settings = {{ATTRIBUTES = (RemoveHeadersOnCopy, ); }}; }};\n")
+    o.append(f"\t\t{I['bf.embedwatch']} /* ZIKRWatch.app in Embed Watch Content */ = {{isa = PBXBuildFile; fileRef = {I['p.watch']}; settings = {{ATTRIBUTES = (RemoveHeadersOnCopy, ); }}; }};\n")
     o.append("/* End PBXBuildFile section */\n\n/* Begin PBXContainerItemProxy section */\n")
-    for key, tgt, name in (("proxy.widgets", "t.widgets", "ZIKRWidgets"), ("proxy.app", "t.app", "ZIKR")):
+    for key, tgt, name in (("proxy.widgets", "t.widgets", "ZIKRWidgets"), ("proxy.app", "t.app", "ZIKR"), ("proxy.watch", "t.watch", "ZIKRWatch")):
         o.append(f"""\t\t{I[key]} = {{
 \t\t\tisa = PBXContainerItemProxy;
 \t\t\tcontainerPortal = {I['project']};
@@ -207,16 +230,28 @@ def pbxproj() -> str:
 \t\t\tname = "Embed Foundation Extensions";
 \t\t\trunOnlyForDeploymentPostprocessing = 0;
 \t\t}};
+\t\t{I['embedwatch.app']} /* Embed Watch Content */ = {{
+\t\t\tisa = PBXCopyFilesBuildPhase;
+\t\t\tbuildActionMask = 2147483647;
+\t\t\tdstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+\t\t\tdstSubfolderSpec = 16;
+\t\t\tfiles = (
+\t\t\t\t{I['bf.embedwatch']},
+\t\t\t);
+\t\t\tname = "Embed Watch Content";
+\t\t\trunOnlyForDeploymentPostprocessing = 0;
+\t\t}};
 """)
     o.append("/* End PBXCopyFilesBuildPhase section */\n\n/* Begin PBXFileReference section */\n")
     o.append(f"\t\t{I['p.app']} /* ZIKR.app */ = {{isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZIKR.app; sourceTree = BUILT_PRODUCTS_DIR; }};\n")
     o.append(f"\t\t{I['p.widgets']} /* ZIKRWidgets.appex */ = {{isa = PBXFileReference; explicitFileType = \"wrapper.app-extension\"; includeInIndex = 0; path = ZIKRWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; }};\n")
+    o.append(f"\t\t{I['p.watch']} /* ZIKRWatch.app */ = {{isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZIKRWatch.app; sourceTree = BUILT_PRODUCTS_DIR; }};\n")
     o.append(f"\t\t{I['p.tests']} /* ZIKRTests.xctest */ = {{isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZIKRTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; }};\n")
     o.append("/* End PBXFileReference section */\n\n/* Begin PBXFileSystemSynchronizedRootGroup section */\n")
-    for name in ("ZIKR", "Shared", "ZIKRWidgets", "ZIKRTests", "Config"):
+    for name in ("ZIKR", "Shared", "ZIKRWidgets", "ZIKRTests", "Config", "ZIKRWatch", "WatchShared"):
         o.append(group(f"g.{name}", name))
     o.append("/* End PBXFileSystemSynchronizedRootGroup section */\n\n/* Begin PBXFrameworksBuildPhase section */\n")
-    for t in ("app", "widgets", "tests"):
+    for t in ("app", "widgets", "tests", "watch"):
         o.append(phase(f"fw.{t}", "PBXFrameworksBuildPhase"))
     o.append("/* End PBXFrameworksBuildPhase section */\n\n/* Begin PBXGroup section */\n")
     o.append(f"""\t\t{I['main']} = {{
@@ -227,6 +262,8 @@ def pbxproj() -> str:
 \t\t\t\t{I['g.ZIKRWidgets']},
 \t\t\t\t{I['g.ZIKRTests']},
 \t\t\t\t{I['g.Config']},
+\t\t\t\t{I['g.ZIKRWatch']},
+\t\t\t\t{I['g.WatchShared']},
 \t\t\t\t{I['products']},
 \t\t\t);
 \t\t\tsourceTree = "<group>";
@@ -237,14 +274,17 @@ def pbxproj() -> str:
 \t\t\t\t{I['p.app']},
 \t\t\t\t{I['p.widgets']},
 \t\t\t\t{I['p.tests']},
+\t\t\t\t{I['p.watch']},
 \t\t\t);
 \t\t\tname = Products;
 \t\t\tsourceTree = "<group>";
 \t\t}};
 """)
     o.append("/* End PBXGroup section */\n\n/* Begin PBXNativeTarget section */\n")
-    o.append(target("t.app", "ZIKR", ["src.app", "fw.app", "res.app", "embed.app"], ["dep.widgets"],
-                    ["g.ZIKR", "g.Shared"], "p.app", "com.apple.product-type.application", "cl.app"))
+    o.append(target("t.app", "ZIKR", ["src.app", "fw.app", "res.app", "embed.app", "embedwatch.app"], ["dep.widgets", "dep.watch"],
+                    ["g.ZIKR", "g.Shared", "g.WatchShared"], "p.app", "com.apple.product-type.application", "cl.app"))
+    o.append(target("t.watch", "ZIKRWatch", ["src.watch", "fw.watch", "res.watch"], [],
+                    ["g.ZIKRWatch", "g.WatchShared"], "p.watch", "com.apple.product-type.application", "cl.watch"))
     o.append(target("t.widgets", "ZIKRWidgets", ["src.widgets", "fw.widgets", "res.widgets"], [],
                     ["g.ZIKRWidgets", "g.Shared"], "p.widgets", "com.apple.product-type.app-extension", "cl.widgets"))
     o.append(target("t.tests", "ZIKRTests", ["src.tests", "fw.tests", "res.tests"], ["dep.app"],
@@ -261,6 +301,9 @@ def pbxproj() -> str:
 \t\t\t\t\t\tCreatedOnToolsVersion = 26.0;
 \t\t\t\t\t}};
 \t\t\t\t\t{I['t.widgets']} = {{
+\t\t\t\t\t\tCreatedOnToolsVersion = 26.0;
+\t\t\t\t\t}};
+\t\t\t\t\t{I['t.watch']} = {{
 \t\t\t\t\t\tCreatedOnToolsVersion = 26.0;
 \t\t\t\t\t}};
 \t\t\t\t\t{I['t.tests']} = {{
@@ -289,17 +332,18 @@ def pbxproj() -> str:
 \t\t\t\t{I['t.app']},
 \t\t\t\t{I['t.widgets']},
 \t\t\t\t{I['t.tests']},
+\t\t\t\t{I['t.watch']},
 \t\t\t);
 \t\t}};
 """)
     o.append("/* End PBXProject section */\n\n/* Begin PBXResourcesBuildPhase section */\n")
-    for t in ("app", "widgets", "tests"):
+    for t in ("app", "widgets", "tests", "watch"):
         o.append(phase(f"res.{t}", "PBXResourcesBuildPhase"))
     o.append("/* End PBXResourcesBuildPhase section */\n\n/* Begin PBXSourcesBuildPhase section */\n")
-    for t in ("app", "widgets", "tests"):
+    for t in ("app", "widgets", "tests", "watch"):
         o.append(phase(f"src.{t}", "PBXSourcesBuildPhase"))
     o.append("/* End PBXSourcesBuildPhase section */\n\n/* Begin PBXTargetDependency section */\n")
-    for key, tgt, proxy in (("dep.widgets", "t.widgets", "proxy.widgets"), ("dep.app", "t.app", "proxy.app")):
+    for key, tgt, proxy in (("dep.widgets", "t.widgets", "proxy.widgets"), ("dep.app", "t.app", "proxy.app"), ("dep.watch", "t.watch", "proxy.watch")):
         o.append(f"""\t\t{I[key]} = {{
 \t\t\tisa = PBXTargetDependency;
 \t\t\ttarget = {I[tgt]};
@@ -309,12 +353,12 @@ def pbxproj() -> str:
     o.append("/* End PBXTargetDependency section */\n\n/* Begin XCBuildConfiguration section */\n")
     o.append(config("c.project.d", "Debug", PROJECT_DEBUG))
     o.append(config("c.project.r", "Release", PROJECT_RELEASE))
-    for t, values in (("app", APP), ("widgets", WIDGETS), ("tests", TESTS)):
+    for t, values in (("app", APP), ("widgets", WIDGETS), ("tests", TESTS), ("watch", WATCH)):
         o.append(config(f"c.{t}.d", "Debug", values))
         o.append(config(f"c.{t}.r", "Release", values))
     o.append("/* End XCBuildConfiguration section */\n\n/* Begin XCConfigurationList section */\n")
     o.append(config_list("cl.project", "c.project.d", "c.project.r"))
-    for t in ("app", "widgets", "tests"):
+    for t in ("app", "widgets", "tests", "watch"):
         o.append(config_list(f"cl.{t}", f"c.{t}.d", f"c.{t}.r"))
     o.append("/* End XCConfigurationList section */\n")
     body = "".join(o)

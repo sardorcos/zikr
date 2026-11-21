@@ -9,6 +9,8 @@
 | `Shared/` | Общий код приложения и виджетов: модели (схема v4), движок, хранилище, миграции, интенты, локализация |
 | `ZIKR/` | Приложение: `App/` (состояние, точка входа), `Services/` (синхронизация, напоминания, Live Activity, вибрация), `Views/` |
 | `ZIKRWidgets/` | Виджет, Live Activity, элемент Пункта управления |
+| `ZIKRWatch/` | Приложение для Apple Watch (watchOS 11+): счёт касанием и двойным касанием пальцами |
+| `WatchShared/` | Протокол синхронизации iPhone ↔ Apple Watch (WatchConnectivity) |
 | `ZIKRTests/` | Юнит-тесты (Swift Testing) |
 | `Config/` | Info.plist и entitlements |
 | `tools/` | Генераторы: проект Xcode, локализация; `prepare_icon.py` готовит иконки из `docs/icon-master.png` |

@@ -107,5 +107,26 @@ workflows:
             xcrun simctl shutdown "$UDID"; xcrun simctl delete "$UDID"
           done
           sips -g pixelWidth -g pixelHeight screenshots/*.png | grep pixel | sort | uniq -c
+      - name: Apple Watch screenshots
+        script: |
+          set -euo pipefail
+          xcodebuild -project ZIKR.xcodeproj -target ZIKRWatch -configuration Debug -sdk watchsimulator \
+            SYMROOT="$PWD/build/watch" CODE_SIGNING_ALLOWED=NO build | tail -n 3
+          WAPP=$(ls -d build/watch/Debug-watchsimulator/ZIKRWatch.app)
+          WBID=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$WAPP/Info.plist")
+          WTYPE=$(xcrun simctl list devicetypes -j | python3 -c "import json,sys,re; t=[d for d in json.load(sys.stdin)['devicetypes'] if re.search(r'Apple Watch Series \d+ \(46mm\)', d['name'])]; t.sort(key=lambda d:int(re.search(r'Series (\d+)',d['name']).group(1))); print(t[-1]['identifier'])")
+          WRT=$(xcrun simctl list runtimes -j | python3 -c "import json,sys; r=[x for x in json.load(sys.stdin)['runtimes'] if x['platform']=='watchOS' and x['isAvailable']]; print(r[-1]['identifier'])")
+          echo "watch type $WTYPE runtime $WRT"
+          for LANG in ru en; do
+            W=$(xcrun simctl create "Watch-$LANG" "$WTYPE" "$WRT")
+            xcrun simctl boot "$W"; xcrun simctl bootstatus "$W" -b
+            xcrun simctl install "$W" "$WAPP"
+            xcrun simctl launch "$W" "$WBID" -AppleLanguages "($LANG)" -ZIKRScreenshots >/dev/null; sleep 60
+            xcrun simctl terminate "$W" "$WBID" || true
+            xcrun simctl launch "$W" "$WBID" -AppleLanguages "($LANG)" -ZIKRScreenshots >/dev/null; sleep 8
+            xcrun simctl io "$W" screenshot "screenshots/watch-$LANG.png"
+            xcrun simctl shutdown "$W"; xcrun simctl delete "$W"
+          done
+          sips -g pixelWidth -g pixelHeight screenshots/watch-*.png | grep pixel
     artifacts:
       - screenshots/*.png

@@ -47,7 +47,10 @@ enum NotificationRouter {
 @Observable
 @MainActor
 final class AppStore {
-    private(set) var data: ZikrData
+    private(set) var data: ZikrData {
+        // Every change (taps, edits, widget/intent changes adopted from disk) refreshes the watch.
+        didSet { WatchBridge.shared.scheduleSnapshot() }
+    }
     var loadIssue: LoadIssue?
     var alert: AlertInfo?
     var tab: AppTab = .home
@@ -120,6 +123,31 @@ final class AppStore {
             openFromNotification(pending)
         }
         liveActivityRef = currentLiveRef()
+        connectWatch()
+    }
+
+    // MARK: Apple Watch
+
+    private func connectWatch() {
+        let bridge = WatchBridge.shared
+        bridge.makeSnapshot = { [weak self] in
+            guard let self else { return .empty }
+            return WatchSnapshot.from(self.data, language: self.language)
+        }
+        bridge.applyTap = { [weak self] tap in self?.applyWatchTap(tap) ?? false }
+        bridge.activate()
+    }
+
+    /// A tap or undo made on the watch, attributed to the moment it happened on the wrist.
+    @discardableResult
+    func applyWatchTap(_ tap: WatchTap) -> Bool {
+        guard let ref = ItemRef(storageString: tap.ref), data.isLive(ref) else { return false }
+        let at = min(tap.at, Date())
+        let result: Result<Void, Error> = tap.delta < 0
+            ? mutate { d in _ = try Actions.undo(&d, ref: ref, now: at) }
+            : mutate { d in _ = try Actions.tap(&d, ref: ref, now: at) }
+        if case .success = result { scheduleLiveActivityUpdate(); return true }
+        return false
     }
 
     // MARK: Localization helpers

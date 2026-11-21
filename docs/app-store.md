@@ -11,7 +11,7 @@
 | Категория | Lifestyle (основная), Productivity (дополнительная) |
 | Возраст | 4+ (во всех пунктах анкеты — «Нет») |
 | Цена | Бесплатно |
-| Устройства | Только iPhone (iOS 18+) |
+| Устройства | iPhone (iOS 18+) и Apple Watch (watchOS 11+) |
 | Шифрование | Не используется (`ITSAppUsesNonExemptEncryption = NO` уже в Info.plist) |
 | App Privacy | **Data Not Collected** |
 | Privacy Policy URL | ссылка на опубликованный `docs/privacy-policy.md` (например, GitHub Pages) |
@@ -19,9 +19,9 @@
 
 ## Ключевые слова (≤100 символов, через запятую без пробелов)
 
-ru: `счетчик,тасбих,четки,подсчет,кликер,привычки,трекер,виджет,кнопка действия,ночной,статистика`
+ru: `счетчик,тасбих,четки,подсчет,кликер,привычки,трекер,виджет,apple watch,часы,статистика`
 
-en: `counter,tally,tasbih,beads,clicker,habit,tracker,widget,action button,night,streak,count`
+en: `counter,tally,tasbih,beads,clicker,habit,tracker,widget,apple watch,streak,count`
 
 > Слова «тасбих/tasbih/четки/beads» — названия предмета (счётных бус), а не религиозный текст. Если хотите полностью нейтральный профиль, уберите их.
 
@@ -34,6 +34,7 @@ ZIKR — спокойный и надёжный счётчик для ежедн
 • Экран блокировки и Dynamic Island: счёт с кнопкой + без разблокировки.
 • Интерактивный виджет и кнопка в Пункте управления.
 • Двойное касание задней панели iPhone через «Команды».
+• Apple Watch: касание экрана или двойное касание пальцами — плюс один; работает и без телефона рядом, счёт догонит iPhone.
 • Ночной режим: чёрный экран, весь экран — кнопка, экран не гаснет.
 
 ПРОГРАММЫ ИЗ НЕСКОЛЬКИХ ШАГОВ
@@ -65,6 +66,7 @@ COUNT WITHOUT LOOKING
 • Lock Screen and Dynamic Island: count with a + button without unlocking.
 • Interactive widget and a Control Center control.
 • Back Tap via Shortcuts.
+• Apple Watch: tap the screen or use Double Tap to add one — works even away from your iPhone and syncs later.
 • Night mode: a black screen where the whole display is the button, and it never locks.
 
 MULTI-STEP PROGRAMS
@@ -114,3 +116,11 @@ No account, no network access, no data collection. All content (names, notes) is
 6. Виджеты на экране «Домой». Подпись: «Виджеты и Пункт управления».
 
 Используйте нейтральные названия счётчиков на скриншотах («Утро», «Вечер», «Моя программа»).
+
+## Apple Watch
+
+Приложение для часов входит в ZIKR (`ZIKRWatch/`, bundle `<app>.watchkitapp`, watchOS 11+).
+- Касание всего экрана или двойное касание пальцами (Series 9 / Ultra 2 и новее) — плюс один; вибрация на круге, цели, шаге и завершении программы.
+- Выбор счётчика или программы, отмена.
+- Синхронизация через WatchConnectivity: iPhone присылает снимок после каждого изменения, часы отправляют каждое нажатие с уникальным ID через `transferUserInfo` (доставка гарантирована системой). Неподтверждённые нажатия хранятся на часах и показываются сразу.
+- Скриншот для App Store (обязателен для приложений с часами): workflow `zikr-screenshots`, Apple Watch Series (46 мм).
