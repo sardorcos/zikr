@@ -48,5 +48,6 @@ workflows:
       - build/*.log
       - build/*.json
       - build/*.err
+      - build/cert-*.log
       - build/*.plist
       - build/export/*.ipa

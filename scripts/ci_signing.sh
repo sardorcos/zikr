@@ -8,22 +8,25 @@ set -uo pipefail
 OUT="${1:-build}"; mkdir -p "$OUT"
 : "${CERTIFICATE_PRIVATE_KEY:?CERTIFICATE_PRIVATE_KEY is not set (Codemagic group zikr_signing)}"
 keychain initialize
+CERT_DIR="$HOME/Library/MobileDevice/Certificates"
+p12_count() { ls "$CERT_DIR"/*.p12 2>/dev/null | wc -l | tr -d ' '; }
 for type in DEVELOPMENT DISTRIBUTION; do
-  found=0
-  if app-store-connect certificates list --type "$type" --certificate-key @env:CERTIFICATE_PRIVATE_KEY --save --json \
-       > "$OUT/cert-$type.json" 2> "$OUT/cert-$type.err"; then
-    found=$(python3 -c 'import json,sys; print(len(json.load(open(sys.argv[1]))))' "$OUT/cert-$type.json" 2>/dev/null || echo 0)
-  fi
-  if [[ "$found" != "0" ]]; then
+  before=$(p12_count)
+  # `list` prints every certificate of the type; only ones matching the key are saved as .p12.
+  app-store-connect certificates list --type "$type" --certificate-key @env:CERTIFICATE_PRIVATE_KEY --save \
+    > "$OUT/cert-$type.log" 2>&1 || true
+  if [[ "$(p12_count)" -gt "$before" ]] && ! grep -q "Did not find any Signing Certificates for given private key" "$OUT/cert-$type.log"; then
     echo "$type certificate: reused"
   elif app-store-connect certificates create --type "$type" --certificate-key @env:CERTIFICATE_PRIVATE_KEY --save \
-         >> "$OUT/cert-$type.err" 2>&1; then
+         >> "$OUT/cert-$type.log" 2>&1 && [[ "$(p12_count)" -gt "$before" ]]; then
     echo "$type certificate: created"
   else
-    echo "$type certificate: could not be created — see $OUT/cert-$type.err"; tail -n 5 "$OUT/cert-$type.err"
+    echo "$type certificate: could not be created — see $OUT/cert-$type.log"
+    sed 's/\x1b\[[0-9;]*m//g' "$OUT/cert-$type.log" | tail -n 8
   fi
 done
+ls -la "$CERT_DIR" 2>/dev/null | tee -a "$OUT/identities.log"
 keychain add-certificates
-security find-identity -v -p codesigning | tee "$OUT/identities.log"
+security find-identity -v -p codesigning | tee -a "$OUT/identities.log"
 app-store-connect devices list --json > "$OUT/devices.json" 2>/dev/null \
   && python3 -c 'import json,sys; print("Registered devices:", len(json.load(open(sys.argv[1]))))' "$OUT/devices.json" | tee -a "$OUT/identities.log" || true
