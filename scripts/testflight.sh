@@ -46,6 +46,20 @@ if [[ "${SKIP_TESTS:-0}" != "1" ]]; then
 fi
 
 echo "▶ Archive (build $BUILD_NUMBER)"
+if [[ "${ZIKR_SIGNING:-auto}" == "manual" ]]; then
+  # CI: the project was switched to manual signing by scripts/ci_profiles.sh. Archive and export an
+  # App Store IPA; Codemagic's publishing step uploads it to App Store Connect / TestFlight.
+  run_logged "$OUT/archive.log" "error:|\*\* ARCHIVE" \
+    xcodebuild archive -project ZIKR.xcodeproj -scheme ZIKR -configuration Release \
+    -destination 'generic/platform=iOS' -archivePath "$ARCHIVE" CURRENT_PROJECT_VERSION="$BUILD_NUMBER"
+  run_logged "$OUT/export.log" "error|EXPORT" \
+    xcodebuild -exportArchive -archivePath "$ARCHIVE" -exportPath "$OUT/export" \
+    -exportOptionsPlist "$OUT/ExportOptions-manual.plist"
+  ls -la "$OUT/export"
+  echo "✅ Build $BUILD_NUMBER archived and signed for the App Store; Codemagic publishing uploads it."
+  exit 0
+fi
+
 # App Store Connect tokens are only valid for minutes; a fresh CI machine with a drifting clock
 # makes Apple reject them ("Authentication failed"). Sync the clock and retry such failures.
 if [[ -n "${CI:-}" ]]; then

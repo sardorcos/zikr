@@ -34,8 +34,11 @@ workflows:
         script: ./scripts/configure.sh "$ZIKR_TEAM_ID" "$ZIKR_BUNDLE_ID" "${ZIKR_PRIVACY_URL:-}" "${ZIKR_SUPPORT_URL:-}"
       - name: Signing certificates
         script: ./scripts/ci_signing.sh build
-      - name: Test, archive and upload to TestFlight
+      - name: Provisioning profiles
+        script: ./scripts/ci_profiles.sh build
+      - name: Test, archive and export IPA
         script: |
+          export ZIKR_SIGNING=manual
           mkdir -p "$HOME/.appstoreconnect"
           python3 scripts/ci_write_key.py "$HOME/.appstoreconnect/AuthKey_$APP_STORE_CONNECT_KEY_IDENTIFIER.p8"
           export ASC_KEY_ID="$APP_STORE_CONNECT_KEY_IDENTIFIER"
@@ -51,3 +54,7 @@ workflows:
       - build/cert-*.log
       - build/*.plist
       - build/export/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: false
