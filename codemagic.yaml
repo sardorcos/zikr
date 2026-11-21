@@ -36,6 +36,8 @@ workflows:
           python3 scripts/ci_write_key.py "$HOME/.appstoreconnect/AuthKey_$APP_STORE_CONNECT_KEY_IDENTIFIER.p8"
           export ASC_KEY_ID="$APP_STORE_CONNECT_KEY_IDENTIFIER"
           export ASC_ISSUER_ID="$APP_STORE_CONNECT_ISSUER_ID"
+          # Key ID and issuer ID are identifiers, not secrets; logged to diagnose auth problems.
+          { echo "key_id=[$ASC_KEY_ID] (${#ASC_KEY_ID} chars)"; echo "issuer=[$ASC_ISSUER_ID] (${#ASC_ISSUER_ID} chars)"; } | tee -a build/ci-key.log
           export ASC_KEY_PATH="$HOME/.appstoreconnect/AuthKey_$APP_STORE_CONNECT_KEY_IDENTIFIER.p8"
           ./scripts/testflight.sh
     artifacts:
