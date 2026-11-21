@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # CI manual signing (the approach Codemagic's standard iOS workflows use):
 #  1. registers the app and widget bundle IDs and enables the App Groups capability,
-#  2. creates/fetches App Store provisioning profiles for both with the CI distribution certificate,
+#  2. creates/fetches App Store provisioning profiles for both (team distribution certificate),
 #  3. applies them to the Xcode project with `xcode-project use-profiles`.
 # Apple's API cannot create an App Group or attach it to an App ID; that one-time step is done in
 # the Developer portal. This script checks the profiles and explains exactly what is missing.
@@ -32,9 +32,34 @@ PY
   echo "$status"
 }
 
+# Team signing: the distribution certificate (with its private key) is loaded by Codemagic's
+# ios_signing from the team's Code signing identities; no new certificates are ever created here.
+# App Store profiles are created through the API from the account's active distribution
+# certificates, so they match whichever team identity is installed.
+bundle_rid() {
+  app-store-connect bundle-ids list --bundle-id-identifier "$1" --strict-match-identifier --json 2>>"$LOG" \
+    | python3 -c 'import json,sys; d=json.load(sys.stdin); print(d[0]["id"] if d else "")' 2>/dev/null
+}
+
 fetch_profile() {
-  app-store-connect fetch-signing-files "$1" --type IOS_APP_STORE --platform IOS --strict-match-identifier \
-    --certificate-key @env:CERTIFICATE_PRIVATE_KEY --create >>"$LOG" 2>&1
+  local rid certs active
+  rid=$(bundle_rid "$1"); [[ -n "$rid" ]] || { echo "No bundle ID $1" >>"$LOG"; return 1; }
+  # Profiles that contained a revoked certificate are INVALID: remove them.
+  for pid in $(app-store-connect bundle-ids profiles --bundle-ids "$rid" --type IOS_APP_STORE --state INVALID --json 2>>"$LOG" \
+      | python3 -c 'import json,sys; print(" ".join(p["id"] for p in json.load(sys.stdin)))' 2>/dev/null); do
+    app-store-connect profiles delete "$pid" >>"$LOG" 2>&1 && echo "  Deleted invalid profile $pid" | tee -a "$LOG"
+  done
+  active=$(app-store-connect bundle-ids profiles --bundle-ids "$rid" --type IOS_APP_STORE --state ACTIVE --json 2>>"$LOG" \
+      | python3 -c 'import json,sys; print(len(json.load(sys.stdin)))' 2>/dev/null || echo 0)
+  if [[ "${active:-0}" == "0" ]]; then
+    certs=$(app-store-connect certificates list --type DISTRIBUTION IOS_DISTRIBUTION --json 2>>"$LOG" \
+      | python3 -c 'import json,sys; print(" ".join(c["id"] for c in json.load(sys.stdin)))')
+    [[ -n "$certs" ]] || { echo "No distribution certificates in the account" | tee -a "$LOG"; return 1; }
+    local name="ZIKR App Store"; [[ "$1" == *.widgets ]] && name="ZIKR Widgets App Store"
+    app-store-connect profiles create "$rid" --type IOS_APP_STORE --certificate-ids $certs --name "$name" >>"$LOG" 2>&1 \
+      && echo "  Created profile '$name'" | tee -a "$LOG" || return 1
+  fi
+  app-store-connect bundle-ids profiles --bundle-ids "$rid" --type IOS_APP_STORE --state ACTIVE --save >>"$LOG" 2>&1
 }
 
 need_portal=0

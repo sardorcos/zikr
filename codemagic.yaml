@@ -1,7 +1,8 @@
 # Codemagic → TestFlight.
-# Signing is done by Xcode's automatic (cloud-managed) signing with the App Store Connect API key
-# from the Codemagic integration below; it also registers the App Group for the app and widgets.
-# Team ID and bundle ID are detected from App Store Connect unless set in `vars`.
+# Signing: the team's Apple Distribution identity (monetniy-mir-distribution, with private key) is
+# loaded by ios_signing from Codemagic Code signing identities. App Store profiles for the app and
+# the widget extension (with the App Group) are created/fetched through the App Store Connect API
+# by scripts/ci_profiles.sh. No new certificates are created.
 workflows:
   ios-testflight:
     name: ZIKR → TestFlight
@@ -11,12 +12,18 @@ workflows:
       app_store_connect: monetniy-mir-asc
     environment:
       xcode: latest
-      groups:
-        - zikr_signing   # CERTIFICATE_PRIVATE_KEY for the CI signing certificates
+      ios_signing:
+        certificates:
+          - monetniy-mir-distribution
+        # Codemagic requires a stored profile next to the certificate; this team profile is only
+        # loaded, never used for ZIKR (its own profiles come from scripts/ci_profiles.sh).
+        provisioning_profiles:
+          - mayor-city-app-store
       vars:
-        ZIKR_TEAM_ID: "SET_TEAM_ID"
-        ZIKR_BUNDLE_ID: "SET_BUNDLE_ID"
-        # Optional: ZIKR_PRIVACY_URL / ZIKR_SUPPORT_URL (https://…) show links in Settings.
+        ZIKR_TEAM_ID: "8PMNK7YN6D"
+        ZIKR_BUNDLE_ID: "com.neverlandplayworks.zikr"
+        ZIKR_PRIVACY_URL: "https://sardorcos.github.io/zikr/privacy-policy.html"
+        ZIKR_SUPPORT_URL: "https://sardorcos.github.io/zikr/support.html"
     scripts:
       - name: Environment check
         script: |
@@ -32,8 +39,6 @@ workflows:
           echo "ZIKR_UPLOAD=$ZIKR_UPLOAD" >> "$CM_ENV"
       - name: Configure project
         script: ./scripts/configure.sh "$ZIKR_TEAM_ID" "$ZIKR_BUNDLE_ID" "${ZIKR_PRIVACY_URL:-}" "${ZIKR_SUPPORT_URL:-}"
-      - name: Signing certificates
-        script: ./scripts/ci_signing.sh build
       - name: Provisioning profiles
         script: ./scripts/ci_profiles.sh build
       - name: Test, archive and export IPA
@@ -58,3 +63,46 @@ workflows:
       app_store_connect:
         auth: integration
         submit_to_testflight: false
+
+  # App Store screenshots (6.9", 1320 x 2868) from the simulator with debug-only demo content
+  # (launch argument -ZIKRScreenshots, see ZIKR/App/ScreenshotDemo.swift). No signing needed.
+  zikr-screenshots:
+    name: ZIKR — App Store screenshots
+    instance_type: mac_mini_m2
+    max_build_duration: 45
+    environment:
+      xcode: latest
+    scripts:
+      - name: Build for the simulator
+        script: |
+          set -euo pipefail
+          xcodebuild -project ZIKR.xcodeproj -scheme ZIKR -configuration Debug -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' -derivedDataPath build/sim CODE_SIGNING_ALLOWED=NO build | tail -n 5
+      - name: Capture screenshots
+        script: |
+          set -euo pipefail
+          APP=$(ls -d build/sim/Build/Products/Debug-iphonesimulator/ZIKR.app)
+          BID=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/Info.plist")
+          TYPE=$(xcrun simctl list devicetypes -j | python3 -c "import json,sys,re; t=[d for d in json.load(sys.stdin)['devicetypes'] if re.search(r'iPhone \d+ Pro Max', d['name'])]; t.sort(key=lambda d:int(re.search(r'\d+',d['name']).group())); print(t[-1]['identifier'])")
+          RT=$(xcrun simctl list runtimes -j | python3 -c "import json,sys; r=[x for x in json.load(sys.stdin)['runtimes'] if x['platform']=='iOS' and x['isAvailable']]; print(r[-1]['identifier'])")
+          echo "device type $TYPE runtime $RT"
+          mkdir -p screenshots
+          for LANG in ru en; do
+            UDID=$(xcrun simctl create "Shots-$LANG" "$TYPE" "$RT")
+            xcrun simctl boot "$UDID"; xcrun simctl bootstatus "$UDID" -b
+            xcrun simctl status_bar "$UDID" override --time 9:41 --dataNetwork wifi --wifiBars 3 --cellularMode active --cellularBars 4 --batteryState charged --batteryLevel 100
+            xcrun simctl ui "$UDID" appearance dark
+            xcrun simctl install "$UDID" "$APP"
+            LOC=ru_RU; [ "$LANG" = en ] && LOC=en_US
+            for SHOT in home items stats settings night; do
+              EXTRA=(-ZIKRTab "$SHOT"); [ "$SHOT" = night ] && EXTRA=(-ZIKRTab home -ZIKRNight)
+              xcrun simctl terminate "$UDID" "$BID" 2>/dev/null || true
+              xcrun simctl launch "$UDID" "$BID" -AppleLanguages "($LANG)" -AppleLocale "$LOC" -ZIKRScreenshots "${EXTRA[@]}"
+              sleep 6
+              xcrun simctl io "$UDID" screenshot "screenshots/$LANG-$SHOT.png"
+            done
+            xcrun simctl shutdown "$UDID"; xcrun simctl delete "$UDID"
+          done
+          sips -g pixelWidth -g pixelHeight screenshots/*.png | grep pixel | sort | uniq -c
+    artifacts:
+      - screenshots/*.png

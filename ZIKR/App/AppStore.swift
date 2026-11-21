@@ -99,6 +99,17 @@ final class AppStore {
         loadIssue = issue
         recoveredElements = recovered
         if issue != nil { sync.setBlocked(true) }
+        #if DEBUG
+        if ScreenshotDemo.isActive {
+            // Simulator screenshots for App Store: demo content, never persisted.
+            data = ScreenshotDemo.data(language: data.settings.language ?? AppLanguage.preferred())
+            loadIssue = nil
+            recoveredElements = 0
+            sync.setBlocked(true)
+            tab = ScreenshotDemo.tab
+            nightModePresented = ScreenshotDemo.night
+        }
+        #endif
 
         sync.onCommitted = { [weak self] result, count in self?.didCommit(result, count: count) }
         sync.onFailure = { [weak self] error in self?.didFailToSave(error) }
@@ -184,6 +195,9 @@ final class AppStore {
 
     func reloadFromDisk() {
         guard loadIssue == nil, inFlight == 0 else { return }
+        #if DEBUG
+        if ScreenshotDemo.isActive { return }
+        #endif
         sync.reload { [weak self] fresh in
             guard let self, let fresh, self.inFlight == 0, fresh != self.data else { return }
             self.data = fresh
