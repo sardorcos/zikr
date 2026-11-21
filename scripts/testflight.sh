@@ -46,10 +46,30 @@ if [[ "${SKIP_TESTS:-0}" != "1" ]]; then
 fi
 
 echo "▶ Archive (build $BUILD_NUMBER)"
-run_logged "$OUT/archive.log" "error:|\*\* ARCHIVE" \
+# App Store Connect tokens are only valid for minutes; a fresh CI machine with a drifting clock
+# makes Apple reject them ("Authentication failed"). Sync the clock and retry such failures.
+if [[ -n "${CI:-}" ]]; then
+  echo "Clock before sync: $(date -u)"
+  sudo -n sntp -sS time.apple.com >/dev/null 2>&1 || true
+  echo "Clock after sync:  $(date -u)"
+fi
+for attempt in 1 2 3; do
+  set +e
   xcodebuild archive -project ZIKR.xcodeproj -scheme ZIKR -configuration Release \
-  -destination 'generic/platform=iOS' -archivePath "$ARCHIVE" \
-  CURRENT_PROJECT_VERSION="$BUILD_NUMBER" "${AUTH[@]}"
+    -destination 'generic/platform=iOS' -archivePath "$ARCHIVE" \
+    CURRENT_PROJECT_VERSION="$BUILD_NUMBER" "${AUTH[@]}" > "$OUT/archive.log" 2>&1
+  status=$?
+  set -e
+  cp "$OUT/archive.log" "$OUT/archive-attempt$attempt.log"
+  if [[ $status -eq 0 ]]; then break; fi
+  if grep -q "Authentication failed" "$OUT/archive.log" && [[ $attempt -lt 3 ]]; then
+    echo "Archive attempt $attempt: App Store Connect authentication failed, retrying in 20 s"
+    sleep 20; continue
+  fi
+  grep -E "error:" "$OUT/archive.log" | head -20
+  echo "✖ Archive failed ($status)"; exit $status
+done
+grep -E "\*\* ARCHIVE" "$OUT/archive.log" || true
 
 TEAM_ID=$(grep -o '"DEVELOPMENT_TEAM": "[^"]*"' tools/gen_project.py | cut -d'"' -f4)
 python3 - "$TEAM_ID" "$OUT" <<'PY'
