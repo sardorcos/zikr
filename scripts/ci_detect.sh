@@ -22,10 +22,24 @@ print(match[0] if match else "")
 PY
 )
 fi
+ZIKR_UPLOAD=1
 if [[ -z "$ZIKR_BUNDLE_ID" ]]; then
-  echo "No App Store Connect app named ZIKR was found. Create it (Apps → + → New App) and rerun." >&2
-  cat "$OUT/asc-apps.err" >&2 || true
-  exit 1
+  # No app record yet (Apple's API cannot create one). Still build and test with a bundle ID that
+  # follows the account's existing pattern; Xcode registers it, and the upload step is skipped.
+  ZIKR_BUNDLE_ID=$(python3 - "$OUT/asc-apps.json" <<'PY'
+import json, sys, collections
+try:
+    apps = json.load(open(sys.argv[1]))
+except Exception:
+    apps = []
+prefixes = [a["attributes"]["bundleId"].rsplit(".", 1)[0] for a in apps if "." in a.get("attributes", {}).get("bundleId", "")]
+prefix = collections.Counter(prefixes).most_common(1)[0][0] if prefixes else "com.sardorcos"
+print(prefix + ".zikr")
+PY
+)
+  ZIKR_UPLOAD=0
+  echo "⚠️  No App Store Connect app named ZIKR. Building as $ZIKR_BUNDLE_ID without uploading." >&2
+  echo "   Create the app in App Store Connect with bundle ID $ZIKR_BUNDLE_ID, then rerun." >&2
 fi
 
 if [[ -z "${ZIKR_TEAM_ID:-}" || "${ZIKR_TEAM_ID}" == SET_* ]]; then
@@ -49,4 +63,4 @@ if [[ -z "$ZIKR_TEAM_ID" ]]; then
 fi
 
 echo "Detected: team $ZIKR_TEAM_ID, bundle $ZIKR_BUNDLE_ID" >&2
-echo "export ZIKR_TEAM_ID='$ZIKR_TEAM_ID' ZIKR_BUNDLE_ID='$ZIKR_BUNDLE_ID'"
+echo "export ZIKR_TEAM_ID='$ZIKR_TEAM_ID' ZIKR_BUNDLE_ID='$ZIKR_BUNDLE_ID' ZIKR_UPLOAD='$ZIKR_UPLOAD'"

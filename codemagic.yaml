@@ -28,6 +28,7 @@ workflows:
           eval "$(./scripts/ci_detect.sh build)"
           echo "ZIKR_TEAM_ID=$ZIKR_TEAM_ID" >> "$CM_ENV"
           echo "ZIKR_BUNDLE_ID=$ZIKR_BUNDLE_ID" >> "$CM_ENV"
+          echo "ZIKR_UPLOAD=$ZIKR_UPLOAD" >> "$CM_ENV"
       - name: Configure project
         script: ./scripts/configure.sh "$ZIKR_TEAM_ID" "$ZIKR_BUNDLE_ID" "$ZIKR_PRIVACY_URL" "$ZIKR_SUPPORT_URL"
       - name: Test, archive and upload to TestFlight

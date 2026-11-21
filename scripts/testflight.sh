@@ -51,6 +51,17 @@ run_logged "$OUT/archive.log" "error:|\*\* ARCHIVE" \
   -destination 'generic/platform=iOS' -archivePath "$ARCHIVE" \
   CURRENT_PROJECT_VERSION="$BUILD_NUMBER" "${AUTH[@]}"
 
+if [[ "${ZIKR_UPLOAD:-1}" == "0" ]]; then
+  echo "▶ Export IPA only (no App Store Connect app record yet)"
+  sed 's#<string>upload</string>#<string>export</string>#' scripts/ExportOptions.plist > "$OUT/ExportOptions-local.plist"
+  run_logged "$OUT/export.log" "error|EXPORT" \
+    xcodebuild -exportArchive -archivePath "$ARCHIVE" -exportPath "$OUT/export" \
+    -exportOptionsPlist "$OUT/ExportOptions-local.plist" "${AUTH[@]}"
+  echo "✅ Build $BUILD_NUMBER compiled, tested and signed. Create the app in App Store Connect"
+  echo "   with bundle ID $(grep -o '"ZIKR_BUNDLE_ID": "[^"]*"' tools/gen_project.py | cut -d'"' -f4) and rerun to upload."
+  exit 0
+fi
+
 echo "▶ Upload to App Store Connect"
 run_logged "$OUT/export.log" "error|Upload|EXPORT|uploaded" \
   xcodebuild -exportArchive -archivePath "$ARCHIVE" -exportPath "$OUT/export" \
