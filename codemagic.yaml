@@ -1,0 +1,40 @@
+# Codemagic → TestFlight.
+# In Codemagic: Teams → Integrations → App Store Connect — the API key name must match
+# `integrations.app_store_connect` below. The key needs the Admin role (or "Access to Cloud
+# Managed Distribution Certificate") because signing is done by Xcode's cloud-managed signing,
+# which also registers the App Group for the app and the widget extension automatically.
+workflows:
+  ios-testflight:
+    name: ZIKR → TestFlight
+    instance_type: mac_mini_m2
+    max_build_duration: 90
+    integrations:
+      app_store_connect: ZIKR
+    environment:
+      xcode: latest
+      vars:
+        ZIKR_TEAM_ID: "SET_TEAM_ID"
+        ZIKR_BUNDLE_ID: "SET_BUNDLE_ID"
+        ZIKR_PRIVACY_URL: ""
+        ZIKR_SUPPORT_URL: ""
+    scripts:
+      - name: Environment check
+        script: |
+          xcodebuild -version
+          for v in ZIKR_TEAM_ID ZIKR_BUNDLE_ID APP_STORE_CONNECT_KEY_IDENTIFIER APP_STORE_CONNECT_ISSUER_ID APP_STORE_CONNECT_PRIVATE_KEY; do
+            if [ -n "${!v}" ]; then echo "$v: set"; else echo "$v: MISSING"; fi
+          done
+      - name: Configure team and bundle ID
+        script: ./scripts/configure.sh "$ZIKR_TEAM_ID" "$ZIKR_BUNDLE_ID" "$ZIKR_PRIVACY_URL" "$ZIKR_SUPPORT_URL"
+      - name: Test, archive and upload to TestFlight
+        script: |
+          mkdir -p "$HOME/.appstoreconnect"
+          printf '%s' "$APP_STORE_CONNECT_PRIVATE_KEY" > "$HOME/.appstoreconnect/AuthKey.p8"
+          export ASC_KEY_ID="$APP_STORE_CONNECT_KEY_IDENTIFIER"
+          export ASC_ISSUER_ID="$APP_STORE_CONNECT_ISSUER_ID"
+          export ASC_KEY_PATH="$HOME/.appstoreconnect/AuthKey.p8"
+          ./scripts/testflight.sh
+    artifacts:
+      - build/*.log
+      - build/export/*.ipa
+      - build/ZIKR.xcarchive/dSYMs/**

@@ -22,21 +22,38 @@ ARCHIVE="$OUT/ZIKR.xcarchive"
 AUTH=(-allowProvisioningUpdates -authenticationKeyPath "$ASC_KEY_PATH" -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID")
 rm -rf "$OUT"; mkdir -p "$OUT"
 
+# run_logged LOG FILTER CMD...  — full output to LOG, filtered lines to the console,
+# exits with the command's own status.
+run_logged() {
+  local log="$1" filter="$2"; shift 2
+  set +e
+  "$@" > "$log" 2>&1
+  local status=$?
+  set -e
+  grep -E "$filter" "$log" || true
+  if [[ $status -ne 0 ]]; then
+    echo "✖ Failed ($status). Last lines of $log:"; tail -n 60 "$log"; exit $status
+  fi
+}
+
 python3 tools/gen_l10n.py --check
 
 if [[ "${SKIP_TESTS:-0}" != "1" ]]; then
   SIM=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin)["devices"]; print(next(x["udid"] for r,l in d.items() if "iOS" in r for x in l if x["name"].startswith("iPhone")))')
   echo "▶ Tests on simulator $SIM"
-  xcodebuild test -project ZIKR.xcodeproj -scheme ZIKR -destination "id=$SIM" -quiet
+  run_logged "$OUT/test.log" "error:|✘|failed|\*\* TEST" \
+    xcodebuild test -project ZIKR.xcodeproj -scheme ZIKR -destination "id=$SIM"
 fi
 
 echo "▶ Archive (build $BUILD_NUMBER)"
-xcodebuild archive -project ZIKR.xcodeproj -scheme ZIKR -configuration Release \
+run_logged "$OUT/archive.log" "error:|\*\* ARCHIVE" \
+  xcodebuild archive -project ZIKR.xcodeproj -scheme ZIKR -configuration Release \
   -destination 'generic/platform=iOS' -archivePath "$ARCHIVE" \
-  CURRENT_PROJECT_VERSION="$BUILD_NUMBER" "${AUTH[@]}" -quiet
+  CURRENT_PROJECT_VERSION="$BUILD_NUMBER" "${AUTH[@]}"
 
 echo "▶ Upload to App Store Connect"
-xcodebuild -exportArchive -archivePath "$ARCHIVE" -exportPath "$OUT/export" \
+run_logged "$OUT/export.log" "error|Upload|EXPORT|uploaded" \
+  xcodebuild -exportArchive -archivePath "$ARCHIVE" -exportPath "$OUT/export" \
   -exportOptionsPlist scripts/ExportOptions.plist "${AUTH[@]}"
 
 echo "✅ Build $BUILD_NUMBER uploaded. It appears in TestFlight after processing (usually 5–30 min)."
