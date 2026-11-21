@@ -11,6 +11,8 @@ workflows:
       app_store_connect: monetniy-mir-asc
     environment:
       xcode: latest
+      groups:
+        - zikr_signing   # CERTIFICATE_PRIVATE_KEY for the CI signing certificates
       vars:
         ZIKR_TEAM_ID: "SET_TEAM_ID"
         ZIKR_BUNDLE_ID: "SET_BUNDLE_ID"
@@ -30,6 +32,8 @@ workflows:
           echo "ZIKR_UPLOAD=$ZIKR_UPLOAD" >> "$CM_ENV"
       - name: Configure project
         script: ./scripts/configure.sh "$ZIKR_TEAM_ID" "$ZIKR_BUNDLE_ID" "${ZIKR_PRIVACY_URL:-}" "${ZIKR_SUPPORT_URL:-}"
+      - name: Signing certificates
+        script: ./scripts/ci_signing.sh build
       - name: Test, archive and upload to TestFlight
         script: |
           mkdir -p "$HOME/.appstoreconnect"
@@ -44,4 +48,5 @@ workflows:
       - build/*.log
       - build/*.json
       - build/*.err
+      - build/*.plist
       - build/export/*.ipa

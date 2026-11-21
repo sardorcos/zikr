@@ -46,15 +46,10 @@ if [[ "${SKIP_TESTS:-0}" != "1" ]]; then
 fi
 
 echo "▶ Archive (build $BUILD_NUMBER)"
-# The archive is signed ad hoc (entitlements such as the App Group are embedded, no certificate
-# needed). The export step then re-signs it for the App Store with Xcode's cloud-managed
-# distribution certificate and creates the provisioning profiles for the app and the widgets.
-# This avoids per-machine Apple Development certificates on ephemeral CI machines.
 run_logged "$OUT/archive.log" "error:|\*\* ARCHIVE" \
   xcodebuild archive -project ZIKR.xcodeproj -scheme ZIKR -configuration Release \
   -destination 'generic/platform=iOS' -archivePath "$ARCHIVE" \
-  CURRENT_PROJECT_VERSION="$BUILD_NUMBER" \
-  CODE_SIGN_STYLE=Manual CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=NO PROVISIONING_PROFILE_SPECIFIER=
+  CURRENT_PROJECT_VERSION="$BUILD_NUMBER" "${AUTH[@]}"
 
 TEAM_ID=$(grep -o '"DEVELOPMENT_TEAM": "[^"]*"' tools/gen_project.py | cut -d'"' -f4)
 python3 - "$TEAM_ID" "$OUT" <<'PY'
