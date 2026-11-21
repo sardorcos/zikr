@@ -20,7 +20,7 @@ BUILD_NUMBER="${BUILD_NUMBER:-$(date -u +%Y%m%d.%H%M)}"
 OUT="build"
 ARCHIVE="$OUT/ZIKR.xcarchive"
 AUTH=(-allowProvisioningUpdates -authenticationKeyPath "$ASC_KEY_PATH" -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID")
-rm -rf "$OUT"; mkdir -p "$OUT"
+rm -rf "$ARCHIVE" "$OUT/export"; mkdir -p "$OUT"
 
 # run_logged LOG FILTER CMD...  — full output to LOG, filtered lines to the console,
 # exits with the command's own status.
