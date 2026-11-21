@@ -46,14 +46,32 @@ if [[ "${SKIP_TESTS:-0}" != "1" ]]; then
 fi
 
 echo "▶ Archive (build $BUILD_NUMBER)"
+# The archive is signed ad hoc (entitlements such as the App Group are embedded, no certificate
+# needed). The export step then re-signs it for the App Store with Xcode's cloud-managed
+# distribution certificate and creates the provisioning profiles for the app and the widgets.
+# This avoids per-machine Apple Development certificates on ephemeral CI machines.
 run_logged "$OUT/archive.log" "error:|\*\* ARCHIVE" \
   xcodebuild archive -project ZIKR.xcodeproj -scheme ZIKR -configuration Release \
   -destination 'generic/platform=iOS' -archivePath "$ARCHIVE" \
-  CURRENT_PROJECT_VERSION="$BUILD_NUMBER" "${AUTH[@]}"
+  CURRENT_PROJECT_VERSION="$BUILD_NUMBER" \
+  CODE_SIGN_STYLE=Manual CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=NO PROVISIONING_PROFILE_SPECIFIER=
+
+TEAM_ID=$(grep -o '"DEVELOPMENT_TEAM": "[^"]*"' tools/gen_project.py | cut -d'"' -f4)
+python3 - "$TEAM_ID" "$OUT" <<'PY'
+import plistlib, sys
+team, out = sys.argv[1], sys.argv[2]
+with open("scripts/ExportOptions.plist", "rb") as f:
+    opts = plistlib.load(f)
+opts["teamID"] = team
+with open(f"{out}/ExportOptions.plist", "wb") as f:
+    plistlib.dump(opts, f)
+local = dict(opts, destination="export")
+with open(f"{out}/ExportOptions-local.plist", "wb") as f:
+    plistlib.dump(local, f)
+PY
 
 if [[ "${ZIKR_UPLOAD:-1}" == "0" ]]; then
   echo "▶ Export IPA only (no App Store Connect app record yet)"
-  sed 's#<string>upload</string>#<string>export</string>#' scripts/ExportOptions.plist > "$OUT/ExportOptions-local.plist"
   run_logged "$OUT/export.log" "error|EXPORT" \
     xcodebuild -exportArchive -archivePath "$ARCHIVE" -exportPath "$OUT/export" \
     -exportOptionsPlist "$OUT/ExportOptions-local.plist" "${AUTH[@]}"
@@ -65,6 +83,6 @@ fi
 echo "▶ Upload to App Store Connect"
 run_logged "$OUT/export.log" "error|Upload|EXPORT|uploaded" \
   xcodebuild -exportArchive -archivePath "$ARCHIVE" -exportPath "$OUT/export" \
-  -exportOptionsPlist scripts/ExportOptions.plist "${AUTH[@]}"
+  -exportOptionsPlist "$OUT/ExportOptions.plist" "${AUTH[@]}"
 
 echo "✅ Build $BUILD_NUMBER uploaded. It appears in TestFlight after processing (usually 5–30 min)."
