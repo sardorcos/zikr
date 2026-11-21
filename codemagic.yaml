@@ -93,6 +93,9 @@ workflows:
             xcrun simctl status_bar "$UDID" override --time 9:41 --dataNetwork wifi --wifiBars 3 --cellularMode active --cellularBars 4 --batteryState charged --batteryLevel 100
             xcrun simctl ui "$UDID" appearance dark
             xcrun simctl install "$UDID" "$APP"
+            # First-boot system tips (e.g. "Ready for Apple Intelligence") pop up about a minute after
+            # boot; let them come and go before capturing.
+            xcrun simctl launch "$UDID" "$BID" -ZIKRScreenshots >/dev/null; sleep 90
             LOC=ru_RU; [ "$LANG" = en ] && LOC=en_US
             for SHOT in home items stats settings night; do
               EXTRA=(-ZIKRTab "$SHOT"); [ "$SHOT" = night ] && EXTRA=(-ZIKRTab home -ZIKRNight)
