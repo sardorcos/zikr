@@ -14,8 +14,7 @@ workflows:
       vars:
         ZIKR_TEAM_ID: "SET_TEAM_ID"
         ZIKR_BUNDLE_ID: "SET_BUNDLE_ID"
-        ZIKR_PRIVACY_URL: ""
-        ZIKR_SUPPORT_URL: ""
+        # Optional: ZIKR_PRIVACY_URL / ZIKR_SUPPORT_URL (https://…) show links in Settings.
     scripts:
       - name: Environment check
         script: |
@@ -30,7 +29,7 @@ workflows:
           echo "ZIKR_BUNDLE_ID=$ZIKR_BUNDLE_ID" >> "$CM_ENV"
           echo "ZIKR_UPLOAD=$ZIKR_UPLOAD" >> "$CM_ENV"
       - name: Configure project
-        script: ./scripts/configure.sh "$ZIKR_TEAM_ID" "$ZIKR_BUNDLE_ID" "$ZIKR_PRIVACY_URL" "$ZIKR_SUPPORT_URL"
+        script: ./scripts/configure.sh "$ZIKR_TEAM_ID" "$ZIKR_BUNDLE_ID" "${ZIKR_PRIVACY_URL:-}" "${ZIKR_SUPPORT_URL:-}"
       - name: Test, archive and upload to TestFlight
         script: |
           mkdir -p "$HOME/.appstoreconnect"
