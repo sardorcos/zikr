@@ -400,6 +400,27 @@ def check_urls(meta, attempts=12, delay=30):
     raise SystemExit("Cannot submit: these pages do not open: " + ", ".join(pending))
 
 
+def probe(asc, app):
+    """Diagnostics: lists the relationships of the app and its app info, so new App Store Connect
+    requirements (compliance forms, declarations) can be located in the API."""
+    for path in (f"/v1/apps/{app['id']}", f"/v1/apps/{app['id']}/appInfos"):
+        data = asc.get(path)["data"]
+        for item in (data if isinstance(data, list) else [data]):
+            log(f"== {item['type']} {item['id']} attributes: {json.dumps(item.get('attributes'), ensure_ascii=False)[:1500]}")
+            for name, rel_ in (item.get("relationships") or {}).items():
+                link = (rel_.get("links") or {}).get("related")
+                if not link:
+                    continue
+                try:
+                    out = asc.get(link, ok_missing=True)
+                    d = (out or {}).get("data")
+                    n = len(d) if isinstance(d, list) else (1 if d else 0)
+                    sample = json.dumps(d[:2] if isinstance(d, list) else d, ensure_ascii=False)[:700] if n else ""
+                    log(f"  {name}: {n} {sample}")
+                except Exception as e:
+                    log(f"  {name}: ERROR {str(e)[:300]}")
+
+
 def main():
     if len(sys.argv) < 2:
         raise SystemExit(__doc__)
@@ -408,6 +429,9 @@ def main():
     do_submit = "--submit" in sys.argv
     asc = ASC()
     app = find_app(asc, meta["bundleId"])
+    if os.environ.get("ASC_PROBE"):
+        probe(asc, app)
+        return
     steps = [
         ("content rights", lambda: set_content_rights(asc, app)),
     ]
