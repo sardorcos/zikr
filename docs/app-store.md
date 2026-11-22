@@ -134,3 +134,8 @@ No account, no network access, no data collection. All content (names, notes) is
 3. `app-store-metadata`: тексты, категории, цена «бесплатно», все страны, возраст 4+, скриншоты, заметки для ревью, привязка последней сборки.
 4. Вручную в App Store Connect: App Privacy → «Data Not Collected» → Publish (у API нет этой функции).
 5. `app-store-submit`: то же самое плюс контакт для ревью из защищённой группы `review_contact`, затем отправка на App Review.
+
+## Статус
+
+- 22.11.2026: версия 1.0.0 (сборка 20261121.2023, с приложением для Apple Watch) отправлена на App Review, статус WAITING_FOR_REVIEW.
+- Сделано в браузере: App Privacy «Data Not Collected», GitHub Pages, формы соответствия (Китай: оценка безопасности, ИИ-контент — «Нет»).
