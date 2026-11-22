@@ -366,6 +366,38 @@ def submit(asc, app, version):
             "reviewSubmission": rel("reviewSubmissions", sub["id"]), "appStoreVersion": rel("appStoreVersions", version["id"])}}})
     asc.call("PATCH", f"/v1/reviewSubmissions/{sub['id']}", {"data": {"type": "reviewSubmissions", "id": sub["id"], "attributes": {"submitted": True}}})
     log(f"SUBMITTED for App Review (submission {sub['id']})")
+    time.sleep(5)
+    state = asc.get(f"/v1/reviewSubmissions/{sub['id']}")["data"]["attributes"].get("state")
+    vstate = asc.get(f"/v1/appStoreVersions/{version['id']}")["data"]["attributes"].get("appStoreState")
+    log(f"Review submission state: {state}; version state: {vstate}")
+
+
+def check_urls(meta, attempts=12, delay=30):
+    """Apple opens the privacy policy and support pages during review: both must answer 200.
+    Retries for a few minutes so a GitHub Pages build that is still running can finish."""
+    urls = [meta[k] for k in ("privacyPolicyUrl", "supportUrl", "marketingUrl") if meta.get(k)]
+    pending = list(urls)
+    for attempt in range(attempts):
+        still = []
+        for url in pending:
+            try:
+                req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (asc-submit link check)"})
+                with urllib.request.urlopen(req, timeout=20) as r:
+                    body = r.read(200000).decode("utf-8", "replace")
+                    if r.status == 200 and len(body) > 200:
+                        log(f"URL OK: {url} ({len(body)} bytes)")
+                        continue
+                    still.append(url)
+                    log(f"URL not ready: {url} (HTTP {r.status}, {len(body)} bytes)")
+            except Exception as e:
+                still.append(url)
+                log(f"URL not ready: {url} ({e})")
+        pending = still
+        if not pending:
+            return
+        if attempt + 1 < attempts:
+            time.sleep(delay)
+    raise SystemExit("Cannot submit: these pages do not open: " + ", ".join(pending))
 
 
 def main():
@@ -397,6 +429,9 @@ def main():
     if failures:
         log("Steps needing attention:\n  " + "\n  ".join(failures))
     if do_submit:
+        if failures:
+            raise SystemExit("Cannot submit until the steps above succeed")
+        check_urls(meta)
         if not has_contact:
             raise SystemExit("Cannot submit: review contact (REVIEW_FIRST_NAME/LAST_NAME/PHONE/EMAIL) is missing")
         submit(asc, app, version)
